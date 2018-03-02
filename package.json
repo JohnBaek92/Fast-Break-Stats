@@ -1,0 +1,23 @@
+{
+  "name": "dropping-dimes",
+  "version": "1.0.0",
+  "description": "NBA stats visualization",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnBaek92/Inside_The_NBA.git"
+  },
+  "author": "johnbaek92",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JohnBaek92/Inside_The_NBA/issues"
+  },
+  "homepage": "https://github.com/JohnBaek92/Inside_The_NBA#readme",
+  "dependencies": {
+    "d3": "^4.13.0",
+    "webpack": "^4.0.1"
+  }
+}

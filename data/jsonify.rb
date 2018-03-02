@@ -53,7 +53,7 @@ def jsonify(years)
   data = [] 
 
   years.each do |year|
-    players = {};
+    players = {}
     ['ADV', 'PG'].each do |type|
       File.open("./data/csv/#{year}_#{type}.csv", 'r') do |file|
         csv = CSV.new(file, headers: true)

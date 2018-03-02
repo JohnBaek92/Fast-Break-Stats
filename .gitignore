@@ -1,0 +1,10 @@
+# Ignore all byebug histories and ds stores
+*/.byebug_history
+*/.DS_STORE
+.byebug_history
+
+# Ignore node packages
+node_modules/*
+
+# Ignore source map
+bundle.js.map

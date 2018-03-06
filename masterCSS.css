@@ -22,3 +22,10 @@ div.tooltip {
 #chart-wrapper {
     margin-top: 2em;
 }
+
+.vertical-center {
+    display: flex;
+    align-self: center;
+    margin-left: 1em;
+    margin-right: 1em;
+}

@@ -129,7 +129,7 @@ const renderData = () => {
       .append("text")
       .attr("text-anchor", "middle")
       .attr("transform", `translate(${width/2}, 600)`)
-      .text(yAxisVal); 
+      .text(xAxisVal); 
 
     chart
       .append("g")

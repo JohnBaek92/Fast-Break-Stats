@@ -6,12 +6,12 @@
         <title>Dropping Dimes</title>
     </head>
     <body>
-        <header>
+        <header class="centered">
             <h1>Dropping Dimes</h1>
             <h2>An Assist From John Baek To The Brooklyn Nets</h2>
         </header>
         <div class="side-menu">
-            <div>
+            <div class="axis-input">
                 <h2>X-Axis</h2>
                 <select class="x-selector">
                     <option value="tsPct">TS%</option>
@@ -69,12 +69,13 @@
                     <option value="ptsPg">PTS/G</option>
                 </select>
             </div>
-            <div>
+            <div class = "centered">
+                <h2>Type In A Player's Name And Press Enter To Highlight</h2>
                 <input class="highlight">
             </div>
         </div>
         <div id="chart-wrapper">
-            <svg id="chart" width="800" height="600">
+            <svg id="chart" width="800" height="620">
             </svg>
         </div>
     </body>

@@ -9,3 +9,16 @@ div.tooltip {
     pointer-events: none;
     overflow: hidden;			
 }
+
+.centered {
+    text-align: center;
+}
+
+.axis-input {
+    display: flex;
+    justify-content: center;
+}
+
+#chart-wrapper {
+    margin-top: 2em;
+}

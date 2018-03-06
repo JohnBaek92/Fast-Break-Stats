@@ -44,6 +44,12 @@ const renderData = () => {
       .call(xAxis);
 
     chart
+      .append("text")
+      .attr("text-anchor", "middle")
+      .attr("transform", `translate(${width/2}, 600)`)
+      .text(yAxisVal); 
+
+    chart
       .append("g")
       .attr("transform", `translate(-5)`)
       .call(yAxis);
@@ -69,7 +75,7 @@ const renderData = () => {
       })
       .attr("r", 8)
       .attr("name", function(d) {
-          return d["name"];
+        return d["name"];
       })
       .style("fill", function(d) {
         return colorPicker(d);
@@ -81,7 +87,7 @@ const renderData = () => {
           .duration(200)
           .style("opacity", 0.9);
         tooltip
-          .html(d["name"] + "<br/>" + d[xAxisVal] + ` ${xAxisVal}` + "<br/>" + d[yAxisVal] + ` ${yAxisVal}`)
+          .html(`<img src=https://d2cwpp38twqe55.cloudfront.net/req/201802231/images/players/` + d["name"].split(" ")[1].slice(0,5).toLowerCase() + d["name"].split(" ")[0].slice(0,2).toLowerCase() + "01.jpg" + ">" + "<br/>" + d["name"] + "<br/>" + d[xAxisVal] + ` ${xAxisVal}` + "<br/>" + d[yAxisVal] + ` ${yAxisVal}`)
           .style("left", d3.event.pageX + "px")
           .style("top", d3.event.pageY - 28 + "px");
       })
@@ -121,6 +127,7 @@ const colorPicker = function(d) {
 
 const highlightPlayer = () => {
     let selectedPlayer = d3.select(".highlight").property("value").toLowerCase();
+    if(selectedPlayer === "") { return; }
     let circles = d3.selectAll("circle");
     circles.each(function(circle){
         if(circle.name.toLowerCase().indexOf(selectedPlayer) !== -1){

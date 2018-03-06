@@ -13,7 +13,7 @@ let render = document.addEventListener("DOMContentLoaded", function() {
 
       let yScale = d3.scaleLinear()
       .domain(d3.extent(data, function(d) { return d[yAxisVal]}))
-      .range([10, height - 50]);
+      .range([height - 50, 10]);
       
       let xAxis = d3.axisBottom().scale(xScale);
       let yAxis = d3.axisLeft().scale(yScale);

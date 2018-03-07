@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="masterCSS.css">
-        <title>Alley Oop</title>
-    </head>
-    <body>
-        <header class="centered">
-            <h1>Alley Oop</h1>
-            <h2>An Assist From John Baek To The Brooklyn Nets</h2>
-        </header>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="masterCSS.css">
+    <title>Alley Oop</title>
+</head>
+
+<body>
+    <header class="centered">
+        <h1>Alley Oop</h1>
+        <h2>An Assist From John Baek To The Brooklyn Nets</h2>
+    </header>
+    <div class="app-wrapper">
         <div class="side-menu">
+            <h2>The Radius Of A Player Is Determined By Average Minutes Played</h2>
             <div class="axis-input">
-                <h2>X-Axis  </h2>
+                <h2>X-Axis </h2>
                 <select class="x-selector vertical-center">
                     <option value="tsPct">TS%</option>
                     <option value="threeRate">3PAr</option>
@@ -40,7 +44,7 @@
                     <option value="ptsPg">PTS/G</option>
                     <option value="minutes">Minutes</option>
                 </select>
-                <h2>Y-Axis  </h2>
+                <h2>Y-Axis </h2>
                 <select class="y-selector vertical-center">
                     <option value="tsPct">TS%</option>
                     <option value="threeRate">3PAr</option>
@@ -107,15 +111,15 @@
             </div>
             <div class="centered pos-filter">
                 <h2>Filter By Position</h2>
-                <label for="1">PG (1)</label>
+                <label for="1" class="one-label">PG (1)</label>
                 <input type="checkbox" class="one" value="true" checked>
-                <label for="2">SG (2)</label>
+                <label for="2" class="two-label">SG (2)</label>
                 <input type="checkbox" class="two" checked>
-                <label for="3">SF (3)</label>
+                <label for="3" class="three-label">SF (3)</label>
                 <input type="checkbox" class="three" checked>
-                <label for="4">PF (4)</label>
+                <label for="4" class="four-label">PF (4)</label>
                 <input type="checkbox" class="four" checked>
-                <label for="5">C (5)</label>
+                <label for="5" class="five-label">C (5)</label>
                 <input type="checkbox" class="five" checked>
             </div>
             <div class="centered">
@@ -124,9 +128,14 @@
             </div>
         </div>
         <div id="chart-wrapper">
-            <svg id="chart" width="800" height="620">
+            <svg id="chart" width="900" height="620">
             </svg>
         </div>
-    </body>
-    <script src="./bundle.js" charset="utf-8"></script>
+    </div>
+    <footer class="footer centered">
+        Data Scraped Using Basketball-Reference.com
+    </footer>
+</body>
+<script src="./bundle.js" charset="utf-8"></script>
+
 </html>

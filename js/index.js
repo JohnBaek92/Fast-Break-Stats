@@ -70,7 +70,7 @@ const renderData = () => {
           d3.extent(data, (function(d) {
               return d["minutes"]/d["games"];
           })))
-        .range([5, 30]);  
+        .range([2, 30]);  
 
     let xAxis = d3.axisBottom().scale(xScale);
     let yAxis = d3.axisLeft().scale(yScale);

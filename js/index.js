@@ -105,11 +105,9 @@ const removeData = function() {
     circles.remove();
     let scales = d3.selectAll("g");
     scales.remove();
-    renderData();
 };
 
 const colorPicker = function(d) {
-    debugger
   switch (d["position"]) {
     case "PG":
       return "red";

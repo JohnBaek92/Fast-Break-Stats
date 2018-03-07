@@ -93,7 +93,13 @@ const renderData = () => {
           .duration(200)
           .style("opacity", 0.9);
         tooltip
-          .html(`<img src=https://d2cwpp38twqe55.cloudfront.net/req/201802231/images/players/` + d["name"].split(" ")[1].slice(0,5).toLowerCase() + d["name"].split(" ")[0].slice(0,2).toLowerCase() + "01.jpg" + ">" + "<br/>" + d["name"] + "<br/>" + d[xAxisVal] + ` ${xAxisVal}` + "<br/>" + d[yAxisVal] + ` ${yAxisVal}`)
+          .html(`<img src=https://d2cwpp38twqe55.cloudfront.net/req/201802231/images/players/` + d["name"]
+                .split(" ")[1]
+                .slice(0, 5)
+                .toLowerCase() + d["name"]
+                .split(" ")[0]
+                .slice(0, 2)
+                .toLowerCase() + "01.jpg" + ">" + "<br/>" + d["name"] + "<br/>" + d["team"] + "&nbsp;" + d["position"] + "<br/>" + d[xAxisVal] + ` ${xAxisVal}` + "<br/>" + d[yAxisVal] + ` ${yAxisVal}`)
           .style("left", d3.event.pageX + "px")
           .style("top", d3.event.pageY - 28 + "px");
       })

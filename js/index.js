@@ -80,7 +80,7 @@ const renderData = () => {
       .style("fill", function(d) {
         return colorPicker(d);
       })
-      .style("opacity", 0.7)
+      .style("opacity", 0.5)
       .on("mouseover", function(d) {
         tooltip
           .transition()
@@ -109,6 +109,7 @@ const removeData = function() {
 };
 
 const colorPicker = function(d) {
+    debugger
   switch (d["position"]) {
     case "PG":
       return "red";
@@ -132,12 +133,18 @@ const highlightPlayer = () => {
     circles.each(function(circle){
         if(circle.name.toLowerCase().indexOf(selectedPlayer) !== -1){
             let that = d3.select(this);
+            that.attr("stroke-width", 3)
+            .attr("r", 15)
+            .style("fill", colorPicker(circle))
+            .style("stroke", "black")
+            .style("opacity", 1);
             that.moveToFront();
-            that.attr("stroke-width", 50)
-                .attr("stroke", "#ff00cb")
-                .style("opacity", 1);
         } else {
-            d3.select(this).style("opacity", 0.3);
+            d3.select(this)
+            .style("opacity", 0.5)
+            .attr("r", 8)
+            .attr("stroke-width", 0)
+            .attr("stroke", colorPicker(circle));
         }
     });
 };

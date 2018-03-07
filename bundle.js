@@ -75,11 +75,9 @@
 /*!*********************!*\
   !*** ./js/index.js ***!
   \*********************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
 const d3 = __webpack_require__(/*! d3 */ "./node_modules/d3/index.js");
 //modify d3
 d3.selection.prototype.moveToFront = function() {
@@ -240,8 +238,6 @@ document.addEventListener("DOMContentLoaded", renderData);
 document.querySelector(".highlight").addEventListener("change", highlightPlayer);
 document.querySelector(".x-selector").addEventListener("change", reRenderData);
 document.querySelector(".y-selector").addEventListener("change", reRenderData);
-
-/* harmony default export */ __webpack_exports__["default"] = (renderData);
 
 /***/ }),
 

@@ -158,5 +158,3 @@ document.addEventListener("DOMContentLoaded", renderData);
 document.querySelector(".highlight").addEventListener("change", highlightPlayer);
 document.querySelector(".x-selector").addEventListener("change", reRenderData);
 document.querySelector(".y-selector").addEventListener("change", reRenderData);
-
-export default renderData;

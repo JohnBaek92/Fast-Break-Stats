@@ -20,7 +20,13 @@ div.tooltip {
 }
 
 #chart-wrapper {
+    margin: 0 auto;
     margin-top: 2em;
+}
+
+#chart {
+    display: block; 
+    margin: 0 auto;
 }
 
 .vertical-center {

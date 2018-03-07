@@ -71,7 +71,7 @@ const renderData = () => {
       .data(data)
       .enter()
         .append("circle");
-
+  
     let circleAttrs = circles
       .attr("cx", function(d) {
         return xScale(d[xAxisVal]);
@@ -153,7 +153,20 @@ const highlightPlayer = () => {
     });
 };
 
-const reRenderData = function () {
+const filterByTeam = function() {
+    let teamFilter = d3.select(".team-filter").property("value");
+    let circles = d3.selectAll("circle");
+    circles.each(function(circle) {
+        let that = d3.select(this);
+        if(circle.team !== teamFilter && teamFilter !== "ALL") {
+            that.attr("class", "hidden");
+        } else {
+            that.attr("class", "initial");
+        }
+    });
+};
+
+const reRenderData = function() {
     removeData();
     renderData();
 };
@@ -162,3 +175,4 @@ document.addEventListener("DOMContentLoaded", renderData);
 document.querySelector(".highlight").addEventListener("change", highlightPlayer);
 document.querySelector(".x-selector").addEventListener("change", reRenderData);
 document.querySelector(".y-selector").addEventListener("change", reRenderData);
+document.querySelector(".team-filter").addEventListener("change", filterByTeam);

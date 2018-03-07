@@ -36,7 +36,7 @@ const renderData = () => {
     let chart = d3
       .select("#chart")
       .append("g")
-      .attr("transform", "translate(50, 10)");
+      .attr("transform", "translate(80, 10)");
 
     chart
       .append("g")
@@ -46,8 +46,14 @@ const renderData = () => {
     chart
       .append("text")
       .attr("text-anchor", "middle")
-      .attr("transform", `translate(${width/2}, 600)`)
+      .attr("transform", `translate(${width/2 - 20}, 600)`)
       .text(xAxisVal); 
+
+    chart
+      .append("text")
+      .attr("text-anchor", "middle")
+      .attr("transform", `translate(-45, ${height/2 - 20})rotate(-90)`)
+      .text(yAxisVal); 
 
     chart
       .append("g")

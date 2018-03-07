@@ -239,6 +239,32 @@ const highlightPlayer = () => {
     });
 };
 
+const filterByPos = function() {
+    let pgFilter = d3.select(".one").property("checked");
+    let sgFilter = d3.select(".two").property("checked");
+    let sfFilter = d3.select(".three").property("checked");
+    let pfFilter = d3.select(".four").property("checked");
+    let cFilter = d3.select(".five").property("checked");
+    let circles = d3.selectAll("circle");
+    circles.each(function(circle) {
+        let position = circle.position;
+        let that = d3.select(this);
+        if(pgFilter && position === "PG") {
+            that.attr("class", "initial");
+        } else if(sgFilter && position === "SG") {
+            that.attr("class", "initial");
+        } else if(sfFilter && position === "SF") {
+            that.attr("class", "initial");
+        } else if(pfFilter && position === "PF") {
+            that.attr("class", "initial");
+        } else if(cFilter && position === "C") {
+            that.attr("class", "initial");
+        } else {
+            that.attr("class", "hidden");
+        }
+    });
+};
+
 const filterByTeam = function() {
     let teamFilter = d3.select(".team-filter").property("value");
     let circles = d3.selectAll("circle");
@@ -262,6 +288,8 @@ document.querySelector(".highlight").addEventListener("change", highlightPlayer)
 document.querySelector(".x-selector").addEventListener("change", reRenderData);
 document.querySelector(".y-selector").addEventListener("change", reRenderData);
 document.querySelector(".team-filter").addEventListener("change", filterByTeam);
+document.querySelector(".pos-filter").addEventListener("change", filterByPos);
+
 
 /***/ }),
 

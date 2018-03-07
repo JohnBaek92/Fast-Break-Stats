@@ -6,6 +6,37 @@ d3.selection.prototype.moveToFront = function() {
   });
 };
 
+const filter = function() {
+  let pgFilter = d3.select(".one").property("checked");
+  let sgFilter = d3.select(".two").property("checked");
+  let sfFilter = d3.select(".three").property("checked");
+  let pfFilter = d3.select(".four").property("checked");
+  let cFilter = d3.select(".five").property("checked");
+  let teamFilter = d3.select(".team-filter").property("value");
+  let circles = d3.selectAll("circle");
+  circles.each(function(circle) {
+    let that = d3.select(this);
+    let position = circle.position;
+    if (circle.team !== teamFilter && teamFilter !== "ALL") {
+      that.attr("class", "hidden");
+    } else {
+      if (pgFilter && position === "PG") {
+        that.attr("class", "initial");
+      } else if (sgFilter && position === "SG") {
+        that.attr("class", "initial");
+      } else if (sfFilter && position === "SF") {
+        that.attr("class", "initial");
+      } else if (pfFilter && position === "PF") {
+        that.attr("class", "initial");
+      } else if (cFilter && position === "C") {
+        that.attr("class", "initial");
+      } else {
+        that.attr("class", "hidden");
+      }
+    }
+  });
+};
+
 const renderData = () => {
   d3.json("data/start_data.json", function(error, data) {
     const width = 790;
@@ -46,14 +77,14 @@ const renderData = () => {
     chart
       .append("text")
       .attr("text-anchor", "middle")
-      .attr("transform", `translate(${width/2 - 20}, 600)`)
-      .text(xAxisVal); 
+      .attr("transform", `translate(${width / 2 - 20}, 600)`)
+      .text(xAxisVal);
 
     chart
       .append("text")
       .attr("text-anchor", "middle")
-      .attr("transform", `translate(-45, ${height/2 - 20})rotate(-90)`)
-      .text(yAxisVal); 
+      .attr("transform", `translate(-45, ${height / 2 - 20})rotate(-90)`)
+      .text(yAxisVal);
 
     chart
       .append("g")
@@ -61,17 +92,17 @@ const renderData = () => {
       .call(yAxis);
 
     let tooltip = d3
-        .select("body")
-        .append("div")
-        .attr("class", "tooltip")
-        .style("opacity", 0);
+      .select("body")
+      .append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
 
     let circles = chart
       .selectAll("circle")
       .data(data)
       .enter()
-        .append("circle");
-  
+      .append("circle");
+
     let circleAttrs = circles
       .attr("cx", function(d) {
         return xScale(d[xAxisVal]);
@@ -93,13 +124,31 @@ const renderData = () => {
           .duration(200)
           .style("opacity", 0.9);
         tooltip
-          .html(`<img src=https://d2cwpp38twqe55.cloudfront.net/req/201802231/images/players/` + d["name"]
+          .html(
+            `<img src=https://d2cwpp38twqe55.cloudfront.net/req/201802231/images/players/` +
+              d["name"]
                 .split(" ")[1]
                 .slice(0, 5)
-                .toLowerCase() + d["name"]
+                .toLowerCase() +
+              d["name"]
                 .split(" ")[0]
                 .slice(0, 2)
-                .toLowerCase() + "01.jpg" + ">" + "<br/>" + d["name"] + "<br/>" + d["team"] + "&nbsp;" + d["position"] + "<br/>" + d[xAxisVal] + ` ${xAxisVal}` + "<br/>" + d[yAxisVal] + ` ${yAxisVal}`)
+                .toLowerCase() +
+              "01.jpg" +
+              ">" +
+              "<br/>" +
+              d["name"] +
+              "<br/>" +
+              d["team"] +
+              "&nbsp;" +
+              d["position"] +
+              "<br/>" +
+              d[xAxisVal] +
+              ` ${xAxisVal}` +
+              "<br/>" +
+              d[yAxisVal] +
+              ` ${yAxisVal}`
+          )
           .style("left", d3.event.pageX + "px")
           .style("top", d3.event.pageY - 28 + "px");
       })
@@ -109,14 +158,16 @@ const renderData = () => {
           .duration(500)
           .style("opacity", 0);
       });
+
+    filter(circles);
   });
 };
 
 const removeData = function() {
-    let circles = d3.selectAll("circle");
-    circles.remove();
-    let scales = d3.selectAll("g");
-    scales.remove();
+  let circles = d3.selectAll("circle");
+  circles.remove();
+  let scales = d3.selectAll("g");
+  scales.remove();
 };
 
 const colorPicker = function(d) {
@@ -137,75 +188,45 @@ const colorPicker = function(d) {
 };
 
 const highlightPlayer = () => {
-    let selectedPlayer = d3.select(".highlight").property("value").toLowerCase();
-    if(selectedPlayer === "") { return; }
-    let circles = d3.selectAll("circle");
-    circles.each(function(circle){
-        if(circle.name.toLowerCase().indexOf(selectedPlayer) !== -1){
-            let that = d3.select(this);
-            that.attr("stroke-width", 3)
-            .attr("r", 15)
-            .style("fill", colorPicker(circle))
-            .style("stroke", "black")
-            .style("opacity", 1);
-            that.moveToFront();
-        } else {
-            d3.select(this)
-            .style("opacity", 0.5)
-            .attr("r", 8)
-            .attr("stroke-width", 0)
-            .attr("stroke", colorPicker(circle));
-        }
-    });
-};
-
-const filterByPos = function() {
-    let pgFilter = d3.select(".one").property("checked");
-    let sgFilter = d3.select(".two").property("checked");
-    let sfFilter = d3.select(".three").property("checked");
-    let pfFilter = d3.select(".four").property("checked");
-    let cFilter = d3.select(".five").property("checked");
-    let circles = d3.selectAll("circle");
-    circles.each(function(circle) {
-        let position = circle.position;
-        let that = d3.select(this);
-        if(pgFilter && position === "PG") {
-            that.attr("class", "initial");
-        } else if(sgFilter && position === "SG") {
-            that.attr("class", "initial");
-        } else if(sfFilter && position === "SF") {
-            that.attr("class", "initial");
-        } else if(pfFilter && position === "PF") {
-            that.attr("class", "initial");
-        } else if(cFilter && position === "C") {
-            that.attr("class", "initial");
-        } else {
-            that.attr("class", "hidden");
-        }
-    });
-};
-
-const filterByTeam = function() {
-    let teamFilter = d3.select(".team-filter").property("value");
-    let circles = d3.selectAll("circle");
-    circles.each(function(circle) {
-        let that = d3.select(this);
-        if(circle.team !== teamFilter && teamFilter !== "ALL") {
-            that.attr("class", "hidden");
-        } else {
-            that.attr("class", "initial");
-        }
-    });
+  let selectedPlayer = d3
+    .select(".highlight")
+    .property("value")
+    .toLowerCase();
+  if (selectedPlayer === "") {
+    return;
+  }
+  let circles = d3.selectAll("circle");
+  circles.each(function(circle) {
+    if (circle.name.toLowerCase().indexOf(selectedPlayer) !== -1) {
+      let that = d3.select(this);
+      that
+        .attr("stroke-width", 3)
+        .attr("r", 15)
+        .style("fill", colorPicker(circle))
+        .style("stroke", "black")
+        .style("opacity", 1);
+      that.moveToFront();
+    } else {
+      d3
+        .select(this)
+        .style("opacity", 0.5)
+        .attr("r", 8)
+        .attr("stroke-width", 0)
+        .attr("stroke", colorPicker(circle));
+    }
+  });
 };
 
 const reRenderData = function() {
-    removeData();
-    renderData();
+  removeData();
+  renderData();
 };
 
 document.addEventListener("DOMContentLoaded", renderData);
-document.querySelector(".highlight").addEventListener("change", highlightPlayer);
+document
+  .querySelector(".highlight")
+  .addEventListener("change", highlightPlayer);
 document.querySelector(".x-selector").addEventListener("change", reRenderData);
 document.querySelector(".y-selector").addEventListener("change", reRenderData);
-document.querySelector(".team-filter").addEventListener("change", filterByTeam);
-document.querySelector(".pos-filter").addEventListener("change", filterByPos);
+document.querySelector(".team-filter").addEventListener("change", reRenderData);
+document.querySelector(".pos-filter").addEventListener("change", reRenderData);

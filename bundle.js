@@ -86,6 +86,8 @@ d3.selection.prototype.moveToFront = function() {
   });
 };
 
+let rScale;
+
 const filter = function() {
   let pgFilter = d3.select(".one").property("checked");
   let sgFilter = d3.select(".two").property("checked");
@@ -142,6 +144,14 @@ const renderData = () => {
       )
       .range([height - 50, 10]);
 
+    rScale = d3
+        .scaleLinear()
+        .domain(
+          d3.extent(data, (function(d) {
+              return d["minutes"]/d["games"];
+          })))
+        .range([5, 30]);  
+
     let xAxis = d3.axisBottom().scale(xScale);
     let yAxis = d3.axisLeft().scale(yScale);
     let chart = d3
@@ -190,7 +200,9 @@ const renderData = () => {
       .attr("cy", function(d) {
         return yScale(d[yAxisVal]);
       })
-      .attr("r", 8)
+      .attr("r", function(d) {
+        return rScale((d["minutes"] / d["games"]));
+      })
       .attr("name", function(d) {
         return d["name"];
       })
@@ -228,6 +240,7 @@ const renderData = () => {
               "<br/>" +
               d[yAxisVal] +
               ` ${yAxisVal}`
+            + "<br/>" + "~" + Math.floor(d["minutes"]/d["games"]) + " avg minutes"
           )
           .style("left", d3.event.pageX + "px")
           .style("top", d3.event.pageY - 28 + "px");
@@ -277,20 +290,24 @@ const highlightPlayer = () => {
   }
   let circles = d3.selectAll("circle");
   circles.each(function(circle) {
+    let that = d3.select(this);
+    let radius  = that.attr("r"); 
     if (circle.name.toLowerCase().indexOf(selectedPlayer) !== -1) {
-      let that = d3.select(this);
       that
         .attr("stroke-width", 3)
-        .attr("r", 15)
+        .attr("r", function(d) {
+          return (rScale(d["minutes"] / d["games"]) * 2);
+        })
         .style("fill", colorPicker(circle))
         .style("stroke", "black")
         .style("opacity", 1);
       that.moveToFront();
     } else {
-      d3
-        .select(this)
-        .style("opacity", 0.5)
-        .attr("r", 8)
+      that
+        .style("opacity", 0.3)
+        .attr("r", function(d) {
+          return rScale(d["minutes"] / d["games"]);
+        })
         .attr("stroke-width", 0)
         .attr("stroke", colorPicker(circle));
     }

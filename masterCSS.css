@@ -28,6 +28,10 @@ div.tooltip {
     margin: 0 auto;
 }
 
+#chart-wrapper {
+    /* margin-top: 2em; */
+}
+
 .vertical-center {
     display: flex;
     align-self: center;
@@ -49,7 +53,9 @@ div.tooltip {
 }
 
 .side-menu {
-    margin-top: 4em;
+    /* margin-top: 2em; */
+    border: 1px solid black;
+    padding: 1em;
 }
 
 .footer {
@@ -84,4 +90,15 @@ div.tooltip {
 .five-label {
     background-color: orange;
     padding: 0.2em;
+}
+
+.season-filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.season-label {
+    align-self: center;
+    margin-right: 0.5em;
 }

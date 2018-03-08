@@ -14,11 +14,9 @@
     </header>
     <div class="app-wrapper">
         <div class="side-menu">
-            <h2 class="centered">The Radius Of A Player Is Determined By Average Minutes Played</h2>
             <div class="centered">
                 <div class="season-filter">
-                    <h2>Select NBA Season</h2>
-                    <label>
+                    <label class="season-label">
                         <select class="year">
                             <option value="2010">2010</option>
                             <option value="2011">2011</option>
@@ -31,66 +29,68 @@
                             <option value="2018" selected>2018</option>
                         </select>
                     </label>
+                    <h2> NBA Season</h2>
                 </div>
             </div>
-            <h2 class="centered">Axis Selection</h2>
-            <div class="axis-input">
-                <h2>X-Axis </h2>
-                <select class="x-selector vertical-center">
-                    <option value="tsPct">TS%</option>
-                    <option value="threeRate">3PAr</option>
-                    <option value="astPct">AST%</option>
-                    <option value="oRbPct">ORB%</option>
-                    <option value="dRbPct">DRB%</option>
-                    <option value="tRbPct">TRB%</option>
-                    <option value="stlPct">STL%</option>
-                    <option value="blkPct">BLK%</option>
-                    <option value="usgPct">USG%</option>
-                    <option value="tovPct">TOV%</option>
-                    <option value="obpm">OBPM</option>
-                    <option value="dbpm">DBPM</option>
-                    <option value="bpm">BPM</option>
-                    <option value="fgPct" selected="true">FG%</option>
-                    <option value="threePct">3P%</option>
-                    <option value="ftPct">FT%</option>
-                    <option value="orbPg">ORB/G</option>
-                    <option value="drbPg">DRB/G</option>
-                    <option value="trbPg">REB/G</option>
-                    <option value="astPg">AST/G</option>
-                    <option value="stlPg">STL/G</option>
-                    <option value="blkPg">BLK/G</option>
-                    <option value="tovPg">TOV/G</option>
-                    <option value="ptsPg">PTS/G</option>
-                    <option value="minutes">Tot Min</option>
-                </select>
-                <h2>Y-Axis </h2>
-                <select class="y-selector vertical-center">
-                    <option value="tsPct">TS%</option>
-                    <option value="threeRate">3PAr</option>
-                    <option value="astPct">AST%</option>
-                    <option value="oRbPct">ORB%</option>
-                    <option value="dRbPct">DRB%</option>
-                    <option value="tRbPct">TRB%</option>
-                    <option value="stlPct">STL%</option>
-                    <option value="blkPct">BLK%</option>
-                    <option value="usgPct">USG%</option>
-                    <option value="tovPct">TOV%</option>
-                    <option value="obpm">OBPM</option>
-                    <option value="dbpm">DBPM</option>
-                    <option value="bpm">BPM</option>
-                    <option value="fgPct">FG%</option>
-                    <option value="threePct">3P%</option>
-                    <option value="ftPct" selected="true">FT%</option>
-                    <option value="orbPg">ORB/G</option>
-                    <option value="drbPg">DRB/G</option>
-                    <option value="trbPg">REB/G</option>
-                    <option value="astPg">AST/G</option>
-                    <option value="stlPg">STL/G</option>
-                    <option value="blkPg">BLK/G</option>
-                    <option value="tovPg">TOV/G</option>
-                    <option value="ptsPg">PTS/G</option>
-                    <option value="minutes">Tot Min</option>
-                </select>
+            <div>
+                <div class="axis-input">
+                    <h2>X-Axis </h2>
+                    <select class="x-selector vertical-center">
+                        <option value="tsPct">TS%</option>
+                        <option value="threeRate">3PAr</option>
+                        <option value="astPct">AST%</option>
+                        <option value="oRbPct">ORB%</option>
+                        <option value="dRbPct">DRB%</option>
+                        <option value="tRbPct">TRB%</option>
+                        <option value="stlPct">STL%</option>
+                        <option value="blkPct">BLK%</option>
+                        <option value="usgPct">USG%</option>
+                        <option value="tovPct">TOV%</option>
+                        <option value="obpm">OBPM</option>
+                        <option value="dbpm">DBPM</option>
+                        <option value="bpm">BPM</option>
+                        <option value="fgPct" selected="true">FG%</option>
+                        <option value="threePct">3P%</option>
+                        <option value="ftPct">FT%</option>
+                        <option value="orbPg">ORB/G</option>
+                        <option value="drbPg">DRB/G</option>
+                        <option value="trbPg">REB/G</option>
+                        <option value="astPg">AST/G</option>
+                        <option value="stlPg">STL/G</option>
+                        <option value="blkPg">BLK/G</option>
+                        <option value="tovPg">TOV/G</option>
+                        <option value="ptsPg">PTS/G</option>
+                        <option value="minutes">Tot Min</option>
+                    </select>
+                    <h2>Y-Axis </h2>
+                    <select class="y-selector vertical-center">
+                        <option value="tsPct">TS%</option>
+                        <option value="threeRate">3PAr</option>
+                        <option value="astPct">AST%</option>
+                        <option value="oRbPct">ORB%</option>
+                        <option value="dRbPct">DRB%</option>
+                        <option value="tRbPct">TRB%</option>
+                        <option value="stlPct">STL%</option>
+                        <option value="blkPct">BLK%</option>
+                        <option value="usgPct">USG%</option>
+                        <option value="tovPct">TOV%</option>
+                        <option value="obpm">OBPM</option>
+                        <option value="dbpm">DBPM</option>
+                        <option value="bpm">BPM</option>
+                        <option value="fgPct">FG%</option>
+                        <option value="threePct">3P%</option>
+                        <option value="ftPct" selected="true">FT%</option>
+                        <option value="orbPg">ORB/G</option>
+                        <option value="drbPg">DRB/G</option>
+                        <option value="trbPg">REB/G</option>
+                        <option value="astPg">AST/G</option>
+                        <option value="stlPg">STL/G</option>
+                        <option value="blkPg">BLK/G</option>
+                        <option value="tovPg">TOV/G</option>
+                        <option value="ptsPg">PTS/G</option>
+                        <option value="minutes">Tot Min</option>
+                    </select>
+                </div>
             </div>
             <div class="centered">
                 <div class="centered column">
@@ -100,17 +100,17 @@
                 </div>
                 <div class="centered pos-filter">
                     <h2>Filter By Position</h2>
-                    <label for="1" class="one-label">PG (1)</label>
+                    <label for="1" class="one-label">PG</label>
                     <input type="checkbox" class="one" value="true" checked>
-                    <label for="2" class="two-label">SG (2)</label>
+                    <label for="2" class="two-label">SG</label>
                     <input type="checkbox" class="two" checked>
-                    <label for="3" class="three-label">SF (3)</label>
+                    <label for="3" class="three-label">SF</label>
                     <input type="checkbox" class="three" checked>
                     <br/>
                     <br/>
-                    <label for="4" class="four-label">PF (4)</label>
+                    <label for="4" class="four-label">PF</label>
                     <input type="checkbox" class="four" checked>
-                    <label for="5" class="five-label">C (5)</label>
+                    <label for="5" class="five-label">C</label>
                     <input type="checkbox" class="five" checked>
                 </div>
                 <h2>Filter By Team</h2>

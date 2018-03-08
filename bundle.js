@@ -157,7 +157,7 @@ const renderData = () => {
     let chart = d3
       .select("#chart")
       .append("g")
-      .attr("transform", "translate(80, 10)");
+      .attr("transform", "translate(80, 20)");
 
     chart
       .append("g")
@@ -280,7 +280,7 @@ const colorPicker = function(d) {
   }
 };
 
-const highlightPlayer = () => {
+const highlightPlayer = (e) => {
   let selectedPlayer = d3
     .select(".highlight")
     .property("value")
@@ -312,6 +312,24 @@ const highlightPlayer = () => {
         .attr("stroke", colorPicker(circle));
     }
   });
+  e.target.value = "";
+};
+
+const removeHighlight = function(e) {
+  let reset = e["type"] === "click" || false;
+  let circles = d3.selectAll("circle");
+  if(reset){
+    circles.each(function(circle){
+      let that = d3.select(this);
+      that
+        .attr("stroke-width", 0)
+        .attr("r", function(d) {
+          return rScale(d["minutes"] / d["games"]);
+        })
+        .style("opacity", 0.5);
+    });
+  }
+
 };
 
 const reRenderData = function() {
@@ -327,6 +345,7 @@ document.querySelector(".x-selector").addEventListener("change", reRenderData);
 document.querySelector(".y-selector").addEventListener("change", reRenderData);
 document.querySelector(".team-filter").addEventListener("change", reRenderData);
 document.querySelector(".pos-filter").addEventListener("change", reRenderData);
+document.querySelector(".reset-button").addEventListener("click", removeHighlight);
 
 
 /***/ }),

@@ -78,6 +78,6 @@ File.open('./data/aggregate_data.json', 'w') do |f|
   f.puts(jsonify((2010..2018).to_a))
 end
 
-File.open('./data/placeholder_data.json', 'w') do |f|
+File.open('./data/start_data.json', 'w') do |f|
   f.puts(jsonify((2017..2018).to_a))
 end

@@ -216,7 +216,7 @@ const highlightPlayer = () => {
       that
         .attr("stroke-width", 3)
         .attr("r", function(d) {
-          return (rScale(d["minutes"] / d["games"]) * 2);
+          return (rScale(d["minutes"] / d["games"]));
         })
         .style("fill", colorPicker(circle))
         .style("stroke", "black")

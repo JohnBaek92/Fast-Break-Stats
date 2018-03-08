@@ -74,10 +74,10 @@ def jsonify(years)
   data.to_json
 end
 
-File.open('./data/aggregate_data.json', 'w') do |f|
-  f.puts(jsonify((2010..2018).to_a))
-end
+# File.open('./data/json/aggregate_data.json', 'w') do |f|
+#   f.puts(jsonify((2010..2018).to_a))
+# end
 
 File.open('./data/start_data.json', 'w') do |f|
-  f.puts(jsonify((2017..2018).to_a))
+  f.puts(jsonify((2018..2018).to_a))
 end

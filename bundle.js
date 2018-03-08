@@ -329,7 +329,7 @@ document.querySelector(".y-selector").addEventListener("change", reRenderData);
 document.querySelector(".team-filter").addEventListener("change", reRenderData);
 document.querySelector(".pos-filter").addEventListener("change", reRenderData);
 document.querySelector(".reset-button").addEventListener("click", removeHighlight);
-document.querySelector(".season-filter").addEventListener("click", reRenderData);
+document.querySelector(".season-filter").addEventListener("change", reRenderData);
 
 
 /***/ }),

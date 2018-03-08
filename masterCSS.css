@@ -1,104 +1,109 @@
 .body {
-    background: whitesmoke;
+  background: whitesmoke;
 }
 
-div.tooltip {	
-    position: absolute;			
-    text-align: center;							
-    padding: 2px;				 
-    font: 12px sans-serif;		
-    background: lightsteelblue;	
-    border: 0px;		
-    border-radius: 8px;			
-    pointer-events: none;
-    overflow: hidden;			
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+  overflow: hidden;
 }
 
 .centered {
-    text-align: center;
+  text-align: center;
 }
 
 .axis-input {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 #chart {
-    display: block; 
-    margin: 0 auto;
+  display: block;
+  margin: 0 auto;
 }
 
 #chart-wrapper {
-    /* margin-top: 2em; */
+  /* margin-top: 2em; */
 }
 
 .vertical-center {
-    display: flex;
-    align-self: center;
-    margin-left: 1em;
-    margin-right: 1em;
+  display: flex;
+  align-self: center;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .initial {
-    display: initial;
+  display: initial;
 }
 
 .app-wrapper {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .side-menu {
-    /* margin-top: 2em; */
-    border: 1px solid black;
-    padding: 1em;
+  /* margin-top: 2em; */
+  border: 1px solid black;
+  padding: 1em;
 }
 
 .footer {
-    margin-top: 4em;
+  margin-top: 4em;
 }
 
 .one-label {
-    background-color: red;
-    padding: 0.2em;
+  background-color: red;
+  padding: 0.2em;
 }
 
 .two {
-    background-color: whitesmoke;
+  background-color: whitesmoke;
 }
 
 .two-label {
-    background-color: blue;
-    color: whitesmoke;
-    padding: 0.2em;
+  background-color: blue;
+  color: whitesmoke;
+  padding: 0.2em;
 }
 
 .three-label {
-    background-color: green;
-    padding: 0.2em;
+  background-color: green;
+  padding: 0.2em;
 }
 
 .four-label {
-    background-color: purple;
-    padding: 0.2em;
+  background-color: purple;
+  padding: 0.2em;
 }
 
 .five-label {
-    background-color: orange;
-    padding: 0.2em;
+  background-color: orange;
+  padding: 0.2em;
 }
 
 .season-filter {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .season-label {
-    align-self: center;
-    margin-right: 0.5em;
+  align-self: center;
+  margin-right: 0.5em;
+}
+
+.axis-label {
+  min-width: 71px;
+  align-self: center;
 }

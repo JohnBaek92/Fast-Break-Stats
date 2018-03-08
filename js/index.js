@@ -1,4 +1,5 @@
 const d3 = require("d3");
+const _ = require("lodash");
 //modify d3
 d3.selection.prototype.moveToFront = function() {
   return this.each(function() {
@@ -39,8 +40,10 @@ const filter = function() {
   });
 };
 
-const renderData = (e, input) => {
-  debugger
+const renderData = () => {
+  let startYear = Number(d3.select(".start-year").property("value"));
+  let endYear = Number(d3.select(".end-year").property("value"));
+  _.range(startYear, endYear)
   d3.json(`data/json/${input}.json`, function(error, data) {
     const width = 790;
     const height = 590;
@@ -137,32 +140,13 @@ const renderData = (e, input) => {
           .duration(200)
           .style("opacity", 0.9);
         tooltip
-          .html(
-            `<img src=https://d2cwpp38twqe55.cloudfront.net/req/201802231/images/players/` +
-              d["name"]
+          .html(`<img src=https://d2cwpp38twqe55.cloudfront.net/req/201802231/images/players/` + d["name"]
                 .split(" ")[1]
                 .slice(0, 5)
-                .toLowerCase() +
-              d["name"]
+                .toLowerCase() + d["name"]
                 .split(" ")[0]
                 .slice(0, 2)
-                .toLowerCase() +
-              "01.jpg" +
-              ">" +
-              "<br/>" +
-              d["name"] +
-              "<br/>" +
-              d["team"] +
-              "&nbsp;" +
-              d["position"] +
-              "<br/>" +
-              d[xAxisVal] +
-              ` ${xAxisVal}` +
-              "<br/>" +
-              d[yAxisVal] +
-              ` ${yAxisVal}`
-            + "<br/>" + "~" + Math.floor(d["minutes"]/d["games"]) + " avg minutes"
-          )
+                .toLowerCase() + "01.jpg" + ">" + "<br/>" + d["name"] + "<br/>" + d["team"] + "&nbsp;" + input + "&nbsp;" + d["position"] + "<br/>" + d[xAxisVal] + ` ${xAxisVal}` + "<br/>" + d[yAxisVal] + ` ${yAxisVal}` + "<br/>" + "~" + Math.floor(d["minutes"] / d["games"]) + " avg minutes")
           .style("left", d3.event.pageX + "px")
           .style("top", d3.event.pageY - 28 + "px");
       })
@@ -178,12 +162,11 @@ const renderData = (e, input) => {
 };
 
 const yearSelection = function(e) {
-  e.stopPropagation();
   let startYear = Number(d3.select(".start-year").property("value"));
   let endYear = Number(d3.select(".end-year").property("value"));
-  renderData(startYear);
+  renderData(e, startYear);
   if(startYear === endYear) {return;}
-  renderData(endYear);
+  renderData(e, endYear);
 };
 
 
@@ -265,7 +248,7 @@ const removeHighlight = function(e) {
 
 const reRenderData = function() {
   removeData();
-  renderData();
+  yearSelection();
 };
 
 document.addEventListener("DOMContentLoaded", renderData);
@@ -277,4 +260,4 @@ document.querySelector(".y-selector").addEventListener("change", reRenderData);
 document.querySelector(".team-filter").addEventListener("change", reRenderData);
 document.querySelector(".pos-filter").addEventListener("change", reRenderData);
 document.querySelector(".reset-button").addEventListener("click", removeHighlight);
-document.querySelector(".season-filter").addEventListener("click", yearSelection);
+document.querySelector(".season-filter").addEventListener("click", reRenderData);

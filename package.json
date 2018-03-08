@@ -18,6 +18,7 @@
   "homepage": "https://github.com/JohnBaek92/Inside_The_NBA#readme",
   "dependencies": {
     "d3": "^4.13.0",
+    "lodash": "^4.17.5",
     "webpack": "^4.0.1"
   },
   "devDependencies": {

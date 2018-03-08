@@ -61,6 +61,10 @@ div.tooltip {
     padding: 0.2em;
 }
 
+.two {
+    background-color: whitesmoke;
+}
+
 .two-label {
     background-color: blue;
     color: whitesmoke;

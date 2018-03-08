@@ -119,8 +119,9 @@ const filter = function() {
   });
 };
 
-const renderData = () => {
-  d3.json("data/start_data.json", function(error, data) {
+const renderData = (e, input) => {
+  debugger
+  d3.json(`data/json/${input}.json`, function(error, data) {
     const width = 790;
     const height = 590;
     let xAxisVal = d3.select(".x-selector").property("value");
@@ -256,6 +257,16 @@ const renderData = () => {
   });
 };
 
+const yearSelection = function(e) {
+  e.stopPropagation();
+  let startYear = Number(d3.select(".start-year").property("value"));
+  let endYear = Number(d3.select(".end-year").property("value"));
+  renderData(startYear);
+  if(startYear === endYear) {return;}
+  renderData(endYear);
+};
+
+
 const removeData = function() {
   let circles = d3.selectAll("circle");
   circles.remove();
@@ -346,6 +357,7 @@ document.querySelector(".y-selector").addEventListener("change", reRenderData);
 document.querySelector(".team-filter").addEventListener("change", reRenderData);
 document.querySelector(".pos-filter").addEventListener("change", reRenderData);
 document.querySelector(".reset-button").addEventListener("click", removeHighlight);
+document.querySelector(".season-filter").addEventListener("click", yearSelection);
 
 
 /***/ }),

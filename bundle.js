@@ -121,11 +121,9 @@ const filter = function() {
 };
 
 const renderData = () => {
-  let startYear = Number(d3.select(".start-year").property("value"));
-  let endYear = Number(d3.select(".end-year").property("value"));
-  let seasonRange = _.range(startYear, endYear+1);
+  let currentSeason = Number(d3.select(".year").property("value"));
 
-  seasonRange.forEach(function(year) {
+  [currentSeason].forEach(function(year) {
     d3.json(`data/json/${year}.json`, function(error, data) {
       const width = 790;
       const height = 590;
@@ -223,7 +221,7 @@ const renderData = () => {
                   .toLowerCase() + d["name"]
                   .split(" ")[0]
                   .slice(0, 2)
-                  .toLowerCase() + "01.jpg" + ">" + "<br/>" + d["name"] + "<br/>" + d["team"] + "&nbsp;" + input + "&nbsp;" + d["position"] + "<br/>" + d[xAxisVal] + ` ${xAxisVal}` + "<br/>" + d[yAxisVal] + ` ${yAxisVal}` + "<br/>" + "~" + Math.floor(d["minutes"] / d["games"]) + " avg minutes")
+                  .toLowerCase() + "01.jpg" + ">" + "<br/>" + d["name"] + "<br/>" + d["team"] + "&nbsp;" + year + "&nbsp;" + d["position"] + "<br/>" + d[xAxisVal] + ` ${xAxisVal}` + "<br/>" + d[yAxisVal] + ` ${yAxisVal}` + "<br/>" + "~" + Math.floor(d["minutes"] / d["games"]) + " avg minutes")
             .style("left", d3.event.pageX + "px")
             .style("top", d3.event.pageY - 28 + "px");
         })
@@ -234,7 +232,7 @@ const renderData = () => {
             .style("opacity", 0);
         });
 
-      filter(circles);
+      filter();
     });
   });
 };

@@ -1,7 +1,9 @@
-.body {
+body {
   background: whitesmoke;
   font-family: 'Libre Franklin', sans-serif;
 }
+
+
 
 div.tooltip {
   position: absolute;

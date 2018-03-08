@@ -1,5 +1,6 @@
 .body {
   background: whitesmoke;
+  font-family: 'Libre Franklin', sans-serif;
 }
 
 div.tooltip {
@@ -16,11 +17,6 @@ div.tooltip {
 
 .centered {
   text-align: center;
-}
-
-.axis-input {
-  display: flex;
-  justify-content: center;
 }
 
 #chart {
@@ -103,7 +99,17 @@ div.tooltip {
   margin-right: 0.5em;
 }
 
+.axis-input {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .axis-label {
   min-width: 71px;
   align-self: center;
+}
+
+.axis-label:first-child {
+    margin-top: 0;
 }

@@ -123,132 +123,121 @@ const filter = function() {
 const renderData = () => {
   let startYear = Number(d3.select(".start-year").property("value"));
   let endYear = Number(d3.select(".end-year").property("value"));
-  _.range(startYear, endYear)
-  d3.json(`data/json/${input}.json`, function(error, data) {
-    const width = 790;
-    const height = 590;
-    let xAxisVal = d3.select(".x-selector").property("value");
-    let yAxisVal = d3.select(".y-selector").property("value");
+  let seasonRange = _.range(startYear, endYear+1);
 
-    let xScale = d3
-      .scaleLinear()
-      .domain(
-        d3.extent(data, function(d) {
-          return d[xAxisVal];
-        })
-      )
-      .range([10, width - 50]);
+  seasonRange.forEach(function(year) {
+    d3.json(`data/json/${year}.json`, function(error, data) {
+      const width = 790;
+      const height = 590;
+      let xAxisVal = d3.select(".x-selector").property("value");
+      let yAxisVal = d3.select(".y-selector").property("value");
 
-    let yScale = d3
-      .scaleLinear()
-      .domain(
-        d3.extent(data, function(d) {
-          return d[yAxisVal];
-        })
-      )
-      .range([height - 50, 10]);
-
-    rScale = d3
+      let xScale = d3
         .scaleLinear()
-        .domain(
-          d3.extent(data, (function(d) {
-              return d["minutes"]/d["games"];
-          })))
-        .range([2, 30]);  
+        .domain(d3.extent(data, function(d) {
+            return d[xAxisVal];
+          }))
+        .range([10, width - 50]);
 
-    let xAxis = d3.axisBottom().scale(xScale);
-    let yAxis = d3.axisLeft().scale(yScale);
-    let chart = d3
-      .select("#chart")
-      .append("g")
-      .attr("transform", "translate(80, 20)");
+      let yScale = d3
+        .scaleLinear()
+        .domain(d3.extent(data, function(d) {
+            return d[yAxisVal];
+          }))
+        .range([height - 50, 10]);
 
-    chart
-      .append("g")
-      .attr("transform", `translate(0, 560)`)
-      .call(xAxis);
+      rScale = d3
+        .scaleLinear()
+        .domain(d3.extent(data, function(d) {
+            return d["minutes"] / d["games"];
+          }))
+        .range([2, 30]);
 
-    chart
-      .append("text")
-      .attr("text-anchor", "middle")
-      .attr("transform", `translate(${width / 2 - 20}, 600)`)
-      .text(xAxisVal);
+      let xAxis = d3.axisBottom().scale(xScale);
+      let yAxis = d3.axisLeft().scale(yScale);
+      let chart = d3
+        .select("#chart")
+        .append("g")
+        .attr("transform", "translate(80, 20)");
 
-    chart
-      .append("text")
-      .attr("text-anchor", "middle")
-      .attr("transform", `translate(-45, ${height / 2 - 20})rotate(-90)`)
-      .text(yAxisVal);
+      chart
+        .append("g")
+        .attr("transform", `translate(0, 560)`)
+        .call(xAxis);
 
-    chart
-      .append("g")
-      .attr("transform", `translate(-5)`)
-      .call(yAxis);
+      chart
+        .append("text")
+        .attr("text-anchor", "middle")
+        .attr("transform", `translate(${width / 2 - 20}, 600)`)
+        .text(xAxisVal);
 
-    let tooltip = d3
-      .select("body")
-      .append("div")
-      .attr("class", "tooltip")
-      .style("opacity", 0);
+      chart
+        .append("text")
+        .attr("text-anchor", "middle")
+        .attr("transform", `translate(-45, ${height / 2 - 20})rotate(-90)`)
+        .text(yAxisVal);
 
-    let circles = chart
-      .selectAll("circle")
-      .data(data)
-      .enter()
-      .append("circle");
+      chart
+        .append("g")
+        .attr("transform", `translate(-5)`)
+        .call(yAxis);
 
-    let circleAttrs = circles
-      .attr("cx", function(d) {
-        return xScale(d[xAxisVal]);
-      })
-      .attr("cy", function(d) {
-        return yScale(d[yAxisVal]);
-      })
-      .attr("r", function(d) {
-        return rScale((d["minutes"] / d["games"]));
-      })
-      .attr("name", function(d) {
-        return d["name"];
-      })
-      .style("fill", function(d) {
-        return colorPicker(d);
-      })
-      .style("opacity", 0.5)
-      .on("mouseover", function(d) {
-        tooltip
-          .transition()
-          .duration(200)
-          .style("opacity", 0.9);
-        tooltip
-          .html(`<img src=https://d2cwpp38twqe55.cloudfront.net/req/201802231/images/players/` + d["name"]
-                .split(" ")[1]
-                .slice(0, 5)
-                .toLowerCase() + d["name"]
-                .split(" ")[0]
-                .slice(0, 2)
-                .toLowerCase() + "01.jpg" + ">" + "<br/>" + d["name"] + "<br/>" + d["team"] + "&nbsp;" + input + "&nbsp;" + d["position"] + "<br/>" + d[xAxisVal] + ` ${xAxisVal}` + "<br/>" + d[yAxisVal] + ` ${yAxisVal}` + "<br/>" + "~" + Math.floor(d["minutes"] / d["games"]) + " avg minutes")
-          .style("left", d3.event.pageX + "px")
-          .style("top", d3.event.pageY - 28 + "px");
-      })
-      .on("mouseout", function(d) {
-        tooltip
-          .transition()
-          .duration(500)
-          .style("opacity", 0);
-      });
+      let tooltip = d3
+        .select("body")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
 
-    filter(circles);
+      let circles = chart
+        .selectAll("circle")
+        .data(data)
+        .enter()
+        .append("circle");
+
+      let circleAttrs = circles
+        .attr("cx", function(d) {
+          return xScale(d[xAxisVal]);
+        })
+        .attr("cy", function(d) {
+          return yScale(d[yAxisVal]);
+        })
+        .attr("r", function(d) {
+          return rScale(d["minutes"] / d["games"]);
+        })
+        .attr("name", function(d) {
+          return d["name"];
+        })
+        .style("fill", function(d) {
+          return colorPicker(d);
+        })
+        .style("opacity", 0.5)
+        .on("mouseover", function(d) {
+          tooltip
+            .transition()
+            .duration(200)
+            .style("opacity", 0.9);
+          tooltip
+            .html(`<img src=https://d2cwpp38twqe55.cloudfront.net/req/201802231/images/players/` + d["name"]
+                  .split(" ")[1]
+                  .slice(0, 5)
+                  .toLowerCase() + d["name"]
+                  .split(" ")[0]
+                  .slice(0, 2)
+                  .toLowerCase() + "01.jpg" + ">" + "<br/>" + d["name"] + "<br/>" + d["team"] + "&nbsp;" + input + "&nbsp;" + d["position"] + "<br/>" + d[xAxisVal] + ` ${xAxisVal}` + "<br/>" + d[yAxisVal] + ` ${yAxisVal}` + "<br/>" + "~" + Math.floor(d["minutes"] / d["games"]) + " avg minutes")
+            .style("left", d3.event.pageX + "px")
+            .style("top", d3.event.pageY - 28 + "px");
+        })
+        .on("mouseout", function(d) {
+          tooltip
+            .transition()
+            .duration(500)
+            .style("opacity", 0);
+        });
+
+      filter(circles);
+    });
   });
 };
-
-const yearSelection = function(e) {
-  let startYear = Number(d3.select(".start-year").property("value"));
-  let endYear = Number(d3.select(".end-year").property("value"));
-  renderData(e, startYear);
-  if(startYear === endYear) {return;}
-  renderData(e, endYear);
-};
-
 
 const removeData = function() {
   let circles = d3.selectAll("circle");
@@ -328,7 +317,7 @@ const removeHighlight = function(e) {
 
 const reRenderData = function() {
   removeData();
-  yearSelection();
+  renderData();
 };
 
 document.addEventListener("DOMContentLoaded", renderData);

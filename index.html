@@ -4,16 +4,21 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="masterCSS.css">
-    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet" type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
     <title>Alley Oop</title>
 </head>
 
 <body>
-    <header class="centered">
-        <h1>Alley Oop</h1>
-        <h2>An Assist From John Baek To The Brooklyn Nets</h2>
+    <header class="centered header">
+        <h1 class="logo">Alley Oop</h1>
     </header>
     <div class="app-wrapper">
+        <div id="chart-wrapper">
+            <svg id="chart" width="860" height="650">
+            </svg>
+        </div>
         <div class="side-menu">
             <div class="centered">
                 <div class="season-filter">
@@ -30,77 +35,80 @@
                             <option value="2018" selected>2018</option>
                         </select>
                     </label>
-                    <h2> NBA Season</h2>
+                    <h2 class="season-label">&nbsp; NBA Season</h2>
                 </div>
             </div>
+            <hr />
             <div>
                 <div class="axis-input">
-                    <h2 class="axis-label">X-Axis </h2>
-                    <select class="x-selector vertical-center">
-                        <option value="tsPct">TS%</option>
-                        <option value="threeRate">3PAr</option>
-                        <option value="astPct">AST%</option>
-                        <option value="oRbPct">ORB%</option>
-                        <option value="dRbPct">DRB%</option>
-                        <option value="tRbPct">TRB%</option>
-                        <option value="stlPct">STL%</option>
-                        <option value="blkPct">BLK%</option>
-                        <option value="usgPct">USG%</option>
-                        <option value="tovPct">TOV%</option>
-                        <option value="obpm">OBPM</option>
-                        <option value="dbpm">DBPM</option>
-                        <option value="bpm">BPM</option>
-                        <option value="fgPct" selected="true">FG%</option>
-                        <option value="threePct">3P%</option>
-                        <option value="ftPct">FT%</option>
-                        <option value="orbPg">ORB/G</option>
-                        <option value="drbPg">DRB/G</option>
-                        <option value="trbPg">REB/G</option>
-                        <option value="astPg">AST/G</option>
-                        <option value="stlPg">STL/G</option>
-                        <option value="blkPg">BLK/G</option>
-                        <option value="tovPg">TOV/G</option>
-                        <option value="ptsPg">PTS/G</option>
-                        <option value="minutes">Tot Min</option>
-                    </select>
-                    <h2 class="axis-label">Y-Axis </h2>
-                    <select class="y-selector vertical-center">
-                        <option value="tsPct">TS%</option>
-                        <option value="threeRate">3PAr</option>
-                        <option value="astPct">AST%</option>
-                        <option value="oRbPct">ORB%</option>
-                        <option value="dRbPct">DRB%</option>
-                        <option value="tRbPct">TRB%</option>
-                        <option value="stlPct">STL%</option>
-                        <option value="blkPct">BLK%</option>
-                        <option value="usgPct">USG%</option>
-                        <option value="tovPct">TOV%</option>
-                        <option value="obpm">OBPM</option>
-                        <option value="dbpm">DBPM</option>
-                        <option value="bpm">BPM</option>
-                        <option value="fgPct">FG%</option>
-                        <option value="threePct">3P%</option>
-                        <option value="ftPct" selected="true">FT%</option>
-                        <option value="orbPg">ORB/G</option>
-                        <option value="drbPg">DRB/G</option>
-                        <option value="trbPg">REB/G</option>
-                        <option value="astPg">AST/G</option>
-                        <option value="stlPg">STL/G</option>
-                        <option value="blkPg">BLK/G</option>
-                        <option value="tovPg">TOV/G</option>
-                        <option value="ptsPg">PTS/G</option>
-                        <option value="minutes">Tot Min</option>
-                    </select>
+                    <div class="x-axis-group">
+                        <select class="x-selector vertical-center">
+                            <option value="tsPct">TS%</option>
+                            <option value="threeRate">3PAr</option>
+                            <option value="astPct">AST%</option>
+                            <option value="oRbPct">ORB%</option>
+                            <option value="dRbPct">DRB%</option>
+                            <option value="tRbPct">TRB%</option>
+                            <option value="stlPct">STL%</option>
+                            <option value="blkPct">BLK%</option>
+                            <option value="usgPct">USG%</option>
+                            <option value="tovPct">TOV%</option>
+                            <option value="obpm">OBPM</option>
+                            <option value="dbpm">DBPM</option>
+                            <option value="bpm">BPM</option>
+                            <option value="fgPct">FG%</option>
+                            <option value="threePct">3P%</option>
+                            <option value="ftPct">FT%</option>
+                            <option value="orbPg">ORB/G</option>
+                            <option value="drbPg">DRB/G</option>
+                            <option value="trbPg" selected="true">REB/G</option>
+                            <option value="astPg">AST/G</option>
+                            <option value="stlPg">STL/G</option>
+                            <option value="blkPg">BLK/G</option>
+                            <option value="tovPg">TOV/G</option>
+                            <option value="ptsPg">PTS/G</option>
+                            <option value="minutes">Tot Min</option>
+                        </select>
+                        <h2 class="axis-label">X-Axis </h2>
+                    </div>
+                    <hr />
+                    <div class="y-axis-group">
+                        <select class="y-selector vertical-center">
+                            <option value="tsPct">TS%</option>
+                            <option value="threeRate">3PAr</option>
+                            <option value="astPct">AST%</option>
+                            <option value="oRbPct">ORB%</option>
+                            <option value="dRbPct">DRB%</option>
+                            <option value="tRbPct">TRB%</option>
+                            <option value="stlPct">STL%</option>
+                            <option value="blkPct">BLK%</option>
+                            <option value="usgPct">USG%</option>
+                            <option value="tovPct">TOV%</option>
+                            <option value="obpm">OBPM</option>
+                            <option value="dbpm">DBPM</option>
+                            <option value="bpm">BPM</option>
+                            <option value="fgPct">FG%</option>
+                            <option value="threePct">3P%</option>
+                            <option value="ftPct" selected="true">FT%</option>
+                            <option value="orbPg">ORB/G</option>
+                            <option value="drbPg">DRB/G</option>
+                            <option value="trbPg">REB/G</option>
+                            <option value="astPg">AST/G</option>
+                            <option value="stlPg">STL/G</option>
+                            <option value="blkPg">BLK/G</option>
+                            <option value="tovPg">TOV/G</option>
+                            <option value="ptsPg">PTS/G</option>
+                            <option value="minutes">Tot Min</option>
+                        </select>
+                        <h2 class="axis-label">Y-Axis </h2>
+
+                    </div>
                 </div>
             </div>
+            <hr class="break-line" />
             <div class="centered">
-                <div class="centered column">
-                    <h2>Highlight Player</h2>
-                    <input type="text" class="highlight" placeholder="Input & Press Enter">
-                    <button class="reset-button" type="reset">Reset Highlight</button>
-                </div>
                 <div class="centered pos-filter">
-                    <h2>Filter By Position</h2>
+                    <h2 class="filter-by-pos-header">Filter</h2>
                     <label for="1" class="one-label">PG</label>
                     <input type="checkbox" class="one" value="true" checked>
                     <label for="2" class="two-label">SG</label>
@@ -114,45 +122,50 @@
                     <label for="5" class="five-label">C</label>
                     <input type="checkbox" class="five" checked>
                 </div>
-                <h2>Filter By Team</h2>
-                <select class="team-filter">
-                    <option value="ALL" selected="true">All Teams</option>
-                    <option value="ATL">Atlanta Hawks</option>
-                    <option value="BOS">Boston Celtics</option>
-                    <option value="BRK">Brooklyn Nets</option>
-                    <option value="CHO">Charlotte Hornets</option>
-                    <option value="CHI">Chicago Bulls</option>
-                    <option value="CLE">Cleveland Cavaliers</option>
-                    <option value="DAL">Dallas Mavericks</option>
-                    <option value="DEN">Denver Nuggets</option>
-                    <option value="DET">Detroit Pistons</option>
-                    <option value="GSW">Golden State Warriors</option>
-                    <option value="HOU">Houston Rockets</option>
-                    <option value="IND">Indiana Pacers</option>
-                    <option value="LAC">LA Clippers</option>
-                    <option value="LAL">LA Lakers</option>
-                    <option value="MEM">Memphis Grizzlies</option>
-                    <option value="MIA">Miami Heat</option>
-                    <option value="MIL">Milwaukee Bucks</option>
-                    <option value="MIN">Minnesota Timberwolves</option>
-                    <option value="NOP">New Orleans Pelicans</option>
-                    <option value="NYK">New York Knicks</option>
-                    <option value="OKC">Oklahoma City Thunder</option>
-                    <option value="ORL">Orlando Magic</option>
-                    <option value="PHI">Philadelphia 76ers</option>
-                    <option value="PHO">Phoenix Suns</option>
-                    <option value="POR">Portland Trailblazers</option>
-                    <option value="SAC">Sacramento Kings</option>
-                    <option value="SAS">San Antonio Spurs</option>
-                    <option value="TOR">Toronto Raptors</option>
-                    <option value="UTA">Utah Jazz</option>
-                    <option value="WAS">Washington Wizards</option>
-                </select>
+                <div class="team-filter-wrapper">
+                        <!-- <h2 class="filter-by-team-header">Team</h2> -->
+                        <select class="team-filter">
+                            <option value="ALL" selected="true">Show All Teams</option>
+                            <option value="ATL">Atlanta Hawks</option>
+                            <option value="BOS">Boston Celtics</option>
+                            <option value="BRK">Brooklyn Nets</option>
+                            <option value="CHO">Charlotte Hornets</option>
+                            <option value="CHI">Chicago Bulls</option>
+                            <option value="CLE">Cleveland Cavaliers</option>
+                            <option value="DAL">Dallas Mavericks</option>
+                            <option value="DEN">Denver Nuggets</option>
+                            <option value="DET">Detroit Pistons</option>
+                            <option value="GSW">Golden State Warriors</option>
+                            <option value="HOU">Houston Rockets</option>
+                            <option value="IND">Indiana Pacers</option>
+                            <option value="LAC">LA Clippers</option>
+                            <option value="LAL">LA Lakers</option>
+                            <option value="MEM">Memphis Grizzlies</option>
+                            <option value="MIA">Miami Heat</option>
+                            <option value="MIL">Milwaukee Bucks</option>
+                            <option value="MIN">Minnesota Timberwolves</option>
+                            <option value="NOP">New Orleans Pelicans</option>
+                            <option value="NYK">New York Knicks</option>
+                            <option value="OKC">Oklahoma City Thunder</option>
+                            <option value="ORL">Orlando Magic</option>
+                            <option value="PHI">Philadelphia 76ers</option>
+                            <option value="PHO">Phoenix Suns</option>
+                            <option value="POR">Portland Trailblazers</option>
+                            <option value="SAC">Sacramento Kings</option>
+                            <option value="SAS">San Antonio Spurs</option>
+                            <option value="TOR">Toronto Raptors</option>
+                            <option value="UTA">Utah Jazz</option>
+                            <option value="WAS">Washington Wizards</option>
+                        </select>
+                </div>
+                <hr />
+                <div class="centered column highlight-wrapper">
+                    <h2 class="highlight-player-header">Highlight Player</h2>
+                    <input type="text" class="highlight" placeholder="Input & Press Enter">
+                    <button class="reset-button" type="reset">Reset</button>
+                </div>
+                <hr/>
             </div>
-        </div>
-        <div id="chart-wrapper">
-            <svg id="chart" width="900" height="640">
-            </svg>
         </div>
     </div>
     <footer class="footer centered">

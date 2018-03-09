@@ -160,7 +160,7 @@ const renderData = () => {
     let chart = d3
       .select("#chart")
       .append("g")
-      .attr("transform", "translate(80, 20)");
+      .attr("transform", "translate(80, 32.5)");
 
     chart
       .append("g")

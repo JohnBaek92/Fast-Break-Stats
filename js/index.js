@@ -21,7 +21,8 @@ const filter = function() {
   circles.each(function(circle) {
     let that = d3.select(this);
     let position = circle.position;
-    if (circle.team !== teamFilter && teamFilter !== "ALL") {
+    debugger
+    if (!teamFilter.includes(circle.team) && teamFilter !== "ALL") {
       that.attr("class", "hidden");
     } else {
       if (pgFilter && position === "PG") {
@@ -195,15 +196,15 @@ const removeData = function() {
 const colorPicker = function(d) {
   switch (d["position"]) {
     case "PG":
-      return "red";
+      return "#B13019";
     case "SG":
-      return "blue";
+      return "#5C14C8";
     case "SF":
-      return "green";
+      return "#4FD764";
     case "PF":
-      return "purple";
+      return "#F8AC47";
     case "C":
-      return "orange";
+      return "#08D1C0";
     default:
       return "black";
   }
@@ -221,8 +222,9 @@ const highlightPlayer = e => {
     .select(".highlighted-players")
     .append("li")
     .attr("class", "watching")
-    .text(selectedPlayer);
-  // let watchList = d3.selectAll(".watching");
+    .text(selectedPlayer)
+    .append("div")
+    .text("X");
   watchList.push(selectedPlayer);
   let circles = d3.selectAll("circle");
   circles.each(function(circle) {

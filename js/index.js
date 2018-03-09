@@ -8,6 +8,7 @@ d3.selection.prototype.moveToFront = function() {
 };
 
 let rScale;
+let watchList = [];
 
 const filter = function() {
   let pgFilter = d3.select(".one").property("checked");
@@ -216,29 +217,39 @@ const highlightPlayer = e => {
   if (selectedPlayer === "") {
     return;
   }
+  d3
+    .select(".highlighted-players")
+    .append("li")
+    .attr("class", "watching")
+    .text(selectedPlayer);
+  // let watchList = d3.selectAll(".watching");
+  watchList.push(selectedPlayer);
   let circles = d3.selectAll("circle");
   circles.each(function(circle) {
     let that = d3.select(this);
     let radius = that.attr("r");
-    if (circle.name.toLowerCase().indexOf(selectedPlayer) !== -1) {
-      that
-        .attr("stroke-width", 3)
-        .attr("r", function(d) {
-          return rScale(d["minutes"] / d["games"]);
-        })
-        .style("fill", colorPicker(circle))
-        .style("stroke", "black")
-        .style("opacity", 1);
-      that.moveToFront();
-    } else {
-      that
-        .style("opacity", 0.3)
-        .attr("r", function(d) {
-          return rScale(d["minutes"] / d["games"]);
-        })
-        .attr("stroke-width", 0)
-        .attr("stroke", colorPicker(circle));
-    }
+    that
+      .style("opacity", 0.3)
+      .attr("r", function(d) {
+        return rScale(d["minutes"] / d["games"]);
+      })
+      .attr("stroke-width", 0)
+      .attr("stroke", colorPicker(circle));
+    watchList.forEach(function(player) {
+      if (
+        circle.name.toLowerCase().indexOf(player) !== -1
+      ) {
+        that
+          .attr("stroke-width", 3)
+          .attr("r", function(d) {
+            return rScale(d["minutes"] / d["games"]);
+          })
+          .style("fill", colorPicker(circle))
+          .style("stroke", "black")
+          .style("opacity", 1);
+        that.moveToFront();
+      } 
+    });
   });
   e.target.value = "";
 };

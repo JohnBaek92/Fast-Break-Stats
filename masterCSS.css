@@ -46,6 +46,8 @@ div.tooltip {
 
 .x-selector, .y-selector {
   margin-top: 1em;
+  text-align: center;
+  
 }
 
 #chart {
@@ -196,4 +198,9 @@ div.tooltip {
 
 .highlight-wrapper {
   margin-bottom: 0.7em;
+}
+
+select {
+    text-align-last: center;
+    padding-right: 29px;
 }

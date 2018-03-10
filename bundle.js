@@ -290,20 +290,18 @@ const colorPicker = function(d) {
 };
 
 const highlightPlayer = e => {
-  debugger
   let selectedPlayer = d3
     .select(".highlight")
     .property("value")
     .toLowerCase();
-  if (selectedPlayer === "") {
-    return;
+  if (selectedPlayer) {
+    d3
+      .select(".highlighted-players")
+      .append("option")
+      .attr("class", "watching")
+      .text(selectedPlayer);
+    watchList.push(selectedPlayer);
   }
-  d3
-    .select(".highlighted-players")
-    .append("option")
-    .attr("class", "watching")
-    .text(selectedPlayer);
-  watchList.push(selectedPlayer);
   let circles = d3.selectAll("circle");
   circles.each(function(circle) {
     let that = d3.select(this);
@@ -316,7 +314,6 @@ const highlightPlayer = e => {
       .attr("stroke-width", 0)
       .attr("stroke", colorPicker(circle));
     watchList.forEach(function(player) {
-      debugger
       if (
         circle.name.toLowerCase().indexOf(player) !== -1
       ) {
@@ -332,7 +329,7 @@ const highlightPlayer = e => {
       } 
     });
   });
-  e.target.value = "";
+  document.querySelector(".highlight").value = "";
 };
 
 const removeHighlight = function () {
@@ -343,10 +340,9 @@ const removeHighlight = function () {
   players.each(function(d, i){
     if(this.value === player){
       this.remove();
-      highlightPlayer();
-      debugger
     }
   });
+  highlightPlayer();
 };
 
 const resetHighlight = function(e) {

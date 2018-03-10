@@ -172,7 +172,7 @@ const renderData = () => {
               " avg minutes"
           )
           .style("left", d3.event.pageX + "px")
-          .style("top", d3.event.pageY - 28 + "px");
+          .style("top", d3.event.pageY - 85 + "px");
       })
       .on("mouseout", function(d) {
         tooltip

@@ -21,7 +21,6 @@ const filter = function() {
   circles.each(function(circle) {
     let that = d3.select(this);
     let position = circle.position;
-    debugger
     if (!teamFilter.includes(circle.team) && teamFilter !== "ALL") {
       that.attr("class", "hidden");
     } else {
@@ -220,11 +219,9 @@ const highlightPlayer = e => {
   }
   d3
     .select(".highlighted-players")
-    .append("li")
+    .append("option")
     .attr("class", "watching")
-    .text(selectedPlayer)
-    .append("div")
-    .text("X");
+    .text(selectedPlayer);
   watchList.push(selectedPlayer);
   let circles = d3.selectAll("circle");
   circles.each(function(circle) {
@@ -256,7 +253,20 @@ const highlightPlayer = e => {
   e.target.value = "";
 };
 
-const removeHighlight = function(e) {
+const removeHighlight = function () {
+  let player = d3.select(".highlighted-players").property("value");
+  let playerIdx = watchList.indexOf(player);
+  watchList.splice(playerIdx, 1);
+  let players = d3.selectAll(".watching");
+  players.each(function(d, i){
+    if(this.value === player){
+      highlightPlayer();
+      this.remove();
+    }
+  });
+};
+
+const resetHighlight = function(e) {
   let reset = e["type"] === "click" || false;
   let circles = d3.selectAll("circle");
   if (reset) {
@@ -270,6 +280,11 @@ const removeHighlight = function(e) {
         .style("opacity", 0.5);
     });
   }
+  let players = d3.selectAll(".watching");
+  players.each(function(player) {
+    this.remove();
+  });
+  watchList = [];
 };
 
 const reRenderData = function() {
@@ -287,6 +302,9 @@ document.querySelector(".team-filter").addEventListener("change", reRenderData);
 document.querySelector(".pos-filter").addEventListener("change", reRenderData);
 document
   .querySelector(".reset-button")
+  .addEventListener("click", resetHighlight);
+document
+  .querySelector(".remove-button")
   .addEventListener("click", removeHighlight);
 document
   .querySelector(".season-filter")

@@ -228,6 +228,8 @@ select {
   padding: 0;
   background-color: white;
   list-style: none;
+  min-width: 14em;
+  margin-bottom: 0.7em;
 }
 
 .watching {
@@ -235,4 +237,10 @@ select {
   text-align: center;
   text-transform: capitalize;
   background: white;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }

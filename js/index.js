@@ -236,6 +236,7 @@ const highlightPlayer = e => {
       .attr("stroke-width", 0)
       .attr("stroke", colorPicker(circle));
     watchList.forEach(function(player) {
+      debugger
       if (
         circle.name.toLowerCase().indexOf(player) !== -1
       ) {
@@ -261,7 +262,7 @@ const removeHighlight = function () {
   let players = d3.selectAll(".watching");
   players.each(function(d, i){
     if(this.value === player){
-      this.remove()
+      this.remove();
       highlightPlayer();
       debugger
     }

@@ -60,7 +60,7 @@ div.tooltip {
   text-align: center;
   overflow-x: hidden;
   overflow-y: scroll;
-  
+  padding: 0;
 }
 
 #chart {

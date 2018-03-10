@@ -3,7 +3,7 @@ require('open-uri')
 require('csv')
 require('byebug')
 
-(2010..2018).to_a.each do |year|
+(2018..2018).to_a.each do |year|
   [{short: "ADV", long: "advanced"}, {short: "PG", long: "per_game"}].each do |type|
     doc = Nokogiri::HTML(open("https://www.basketball-reference.com/leagues/NBA_#{year}_#{type[:long]}.html"))
     rows = doc.search('table > tbody > tr.full_table')

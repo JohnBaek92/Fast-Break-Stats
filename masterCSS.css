@@ -160,7 +160,7 @@ div.tooltip {
       margin: 0;
     font-size: 2em;
     padding-top: 0.3em;
-    padding-bottom: 0.3em;
+    padding-bottom: 0.1em;
 }
 
 .axis-input {
@@ -258,6 +258,5 @@ select {
 
 .sub-title {
   margin: 0;
-  margin-top: 0.3em;
   margin-bottom: 0.3em;
 }

@@ -342,7 +342,11 @@ const removeHighlight = function () {
       this.remove();
     }
   });
-  highlightPlayer();
+  if(watchList.length === 0) {
+    reRenderData();
+  } else {
+    highlightPlayer();
+  }
 };
 
 const resetHighlight = function(e) {

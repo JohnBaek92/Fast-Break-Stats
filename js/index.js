@@ -210,6 +210,7 @@ const colorPicker = function(d) {
 };
 
 const highlightPlayer = e => {
+  debugger
   let selectedPlayer = d3
     .select(".highlight")
     .property("value")
@@ -260,8 +261,9 @@ const removeHighlight = function () {
   let players = d3.selectAll(".watching");
   players.each(function(d, i){
     if(this.value === player){
+      this.remove()
       highlightPlayer();
-      this.remove();
+      debugger
     }
   });
 };

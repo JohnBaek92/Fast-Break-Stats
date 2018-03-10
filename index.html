@@ -8,12 +8,13 @@
     <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
-    <title>Fast Break Stats</title>
+    <title>Fast Break</title>
 </head>
 
 <body>
     <header class="centered header">
-        <h1 class="logo">Fast Break Stats</h1>
+        <h1 class="logo">Fast Break</h1>
+        <h2 class="sub-title">An Interactive Graph Of NBA Player Stats</h2>
     </header>
     <div class="app-wrapper">
         <div id="chart-wrapper">
@@ -57,12 +58,12 @@
                             <option value="obpm">OBPM</option>
                             <option value="dbpm">DBPM</option>
                             <option value="bpm">BPM</option>
-                            <option value="fg%">FG%</option>
+                            <option value="fg%" selected="true">FG%</option>
                             <option value="three%">3P%</option>
                             <option value="ft%">FT%</option>
                             <option value="orbPg">ORB/G</option>
                             <option value="drbPg">DRB/G</option>
-                            <option value="trbPg" selected="true">REB/G</option>
+                            <option value="trbPg">REB/G</option>
                             <option value="astPg">AST/G</option>
                             <option value="stlPg">STL/G</option>
                             <option value="blkPg">BLK/G</option>
@@ -178,7 +179,15 @@
         </div>
     </div>
     <footer class="footer centered">
-        Data Scraped Using Basketball-Reference.com
+        <div>
+            Data Scraped Using Basketball-Reference.com
+        </div>
+        <div>
+            Created By <a class="footer-links" href="http://johnbaek.life" target="_blank">John Baek</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/john-baek92/" target="_blank"><img class="footer-links" src="linkedIN.png" /></a> <a href="https://www.github.com/johnbaek92" target="_blank"><img class="footer-links" src="github.png" /></a>
+        </div>
     </footer>
 </body>
 <script src="./bundle.js" charset="utf-8"></script>

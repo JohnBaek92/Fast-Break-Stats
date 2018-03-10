@@ -246,3 +246,18 @@ select {
   flex-direction: row;
   justify-content: space-evenly;
 }
+
+.footer-links {
+  text-decoration: none;
+  color: black;
+}
+
+.footer-links:hover {
+  color: #756d6d;
+}
+
+.sub-title {
+  margin: 0;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+}

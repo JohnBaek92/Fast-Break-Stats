@@ -336,7 +336,9 @@ const removeHighlight = function() {
   watchList.splice(playerIdx, 1);
   let players = d3.selectAll(".watching");
   players.each(function(d, i) {
-    if (this.value === player) {
+    if (player === "" && i === players.nodes().length - 1) {
+      this.remove();
+    } else if (this.value === player) {
       this.remove();
     }
   });

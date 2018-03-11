@@ -269,6 +269,9 @@ select {
   position: fixed;
   left: 0;
   top: 35%;
+  background: whitesmoke;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
 }
 
 .information-open:hover {
@@ -284,7 +287,7 @@ select {
   top: 5%;
   position: fixed;
   text-align: center;
-  background:#da9393;
+  background: #da9393;
   padding-top: 0.4em;
   padding-bottom: 0.4em;
 }

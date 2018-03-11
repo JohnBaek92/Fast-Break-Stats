@@ -1,5 +1,4 @@
 const d3 = require("d3");
-const _ = require("lodash");
 //modify d3
 d3.selection.prototype.moveToFront = function() {
   return this.each(function() {
@@ -9,7 +8,6 @@ d3.selection.prototype.moveToFront = function() {
 
 let rScale;
 let watchList = [];
-
 
 //scatterplot functions
 const filter = function() {
@@ -236,9 +234,7 @@ const highlightPlayer = e => {
       .attr("stroke-width", 0)
       .attr("stroke", colorPicker(circle));
     watchList.forEach(function(player) {
-      if (
-        circle.name.toLowerCase().indexOf(player) !== -1
-      ) {
+      if (circle.name.toLowerCase().indexOf(player) !== -1) {
         that
           .attr("stroke-width", 3)
           .attr("r", function(d) {
@@ -248,23 +244,23 @@ const highlightPlayer = e => {
           .style("stroke", "black")
           .style("opacity", 1);
         that.moveToFront();
-      } 
+      }
     });
   });
   document.querySelector(".highlight").value = "";
 };
 
-const removeHighlight = function () {
+const removeHighlight = function() {
   let player = d3.select(".highlighted-players").property("value");
   let playerIdx = watchList.indexOf(player);
   watchList.splice(playerIdx, 1);
   let players = d3.selectAll(".watching");
-  players.each(function(d, i){
-    if(this.value === player){
+  players.each(function(d, i) {
+    if (this.value === player) {
       this.remove();
     }
   });
-  if(watchList.length === 0) {
+  if (watchList.length === 0) {
     reRenderData();
   } else {
     highlightPlayer();
@@ -306,7 +302,6 @@ const closeInfo = function() {
   document.getElementById("information").style.width = "0";
 };
 
-
 document.addEventListener("DOMContentLoaded", renderData);
 document
   .querySelector(".highlight")
@@ -324,9 +319,7 @@ document
 document
   .querySelector(".season-filter")
   .addEventListener("change", reRenderData);
-document
-  .querySelector(".information-open")
-  .addEventListener("click", openInfo);
+document.querySelector(".information-open").addEventListener("click", openInfo);
 document
   .querySelector("#information-close")
   .addEventListener("click", closeInfo);

@@ -281,10 +281,10 @@ select {
   overflow-x: hidden;
   transition: 0.5s;
   left: 0em;
-  top: 8%;
+  top: 5%;
   position: fixed;
   text-align: center;
-  background: red;
+  background:#da9393;
   padding-top: 0.4em;
   padding-bottom: 0.4em;
 }

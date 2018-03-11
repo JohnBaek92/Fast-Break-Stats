@@ -10,6 +10,86 @@ let rScale;
 let watchList = [];
 
 //scatterplot functions
+const highlightPlayer = e => {
+  let selectedPlayer = d3
+    .select(".highlight")
+    .property("value")
+    .toLowerCase();
+  if (selectedPlayer) {
+    d3
+      .select(".highlighted-players")
+      .append("option")
+      .attr("class", "watching")
+      .text(selectedPlayer);
+    watchList.push(selectedPlayer);
+  }
+  let circles = d3.selectAll("circle");
+  circles.each(function(circle) {
+    let that = d3.select(this);
+    let radius = that.attr("r");
+    that
+      .style("opacity", 0.3)
+      .attr("r", function(d) {
+        return rScale(d["minutes"] / d["games"]);
+      })
+      .attr("stroke-width", 0)
+      .attr("stroke", colorPicker(circle));
+    watchList.forEach(function(player) {
+      if (circle.name.toLowerCase().indexOf(player) !== -1) {
+        that
+          .attr("stroke-width", 3)
+          .attr("r", function(d) {
+            return rScale(d["minutes"] / d["games"]);
+          })
+          .style("fill", colorPicker(circle))
+          .style("stroke", "black")
+          .style("opacity", 1);
+        that.moveToFront();
+      }
+    });
+  });
+  document.querySelector(".highlight").value = "";
+};
+
+const removeHighlight = function() {
+  let player = d3.select(".highlighted-players").property("value");
+  let playerIdx = watchList.indexOf(player);
+  watchList.splice(playerIdx, 1);
+  let players = d3.selectAll(".watching");
+  players.each(function(d, i) {
+    if (player === "" && i === players.nodes().length - 1) {
+      this.remove();
+    } else if (this.value === player) {
+      this.remove();
+    }
+  });
+  if (watchList.length === 0) {
+    reRenderData();
+  } else {
+    highlightPlayer();
+  }
+};
+
+const resetHighlight = function(e) {
+  let reset = e["type"] === "click" || false;
+  let circles = d3.selectAll("circle");
+  if (reset) {
+    circles.each(function(circle) {
+      let that = d3.select(this);
+      that
+        .attr("stroke-width", 0)
+        .attr("r", function(d) {
+          return rScale(d["minutes"] / d["games"]);
+        })
+        .style("opacity", 0.5);
+    });
+  }
+  let players = d3.selectAll(".watching");
+  players.each(function(player) {
+    this.remove();
+  });
+  watchList = [];
+};
 const filter = function() {
   let pgFilter = d3.select(".one").property("checked");
   let sgFilter = d3.select(".two").property("checked");
@@ -39,6 +119,7 @@ const filter = function() {
       }
     }
   });
+  highlightPlayer();
 };
 
 const renderData = () => {
@@ -207,87 +288,6 @@ const colorPicker = function(d) {
     default:
       return "black";
   }
-};
-
-const highlightPlayer = e => {
-  let selectedPlayer = d3
-    .select(".highlight")
-    .property("value")
-    .toLowerCase();
-  if (selectedPlayer) {
-    d3
-      .select(".highlighted-players")
-      .append("option")
-      .attr("class", "watching")
-      .text(selectedPlayer);
-    watchList.push(selectedPlayer);
-  }
-  let circles = d3.selectAll("circle");
-  circles.each(function(circle) {
-    let that = d3.select(this);
-    let radius = that.attr("r");
-    that
-      .style("opacity", 0.3)
-      .attr("r", function(d) {
-        return rScale(d["minutes"] / d["games"]);
-      })
-      .attr("stroke-width", 0)
-      .attr("stroke", colorPicker(circle));
-    watchList.forEach(function(player) {
-      if (circle.name.toLowerCase().indexOf(player) !== -1) {
-        that
-          .attr("stroke-width", 3)
-          .attr("r", function(d) {
-            return rScale(d["minutes"] / d["games"]);
-          })
-          .style("fill", colorPicker(circle))
-          .style("stroke", "black")
-          .style("opacity", 1);
-        that.moveToFront();
-      }
-    });
-  });
-  document.querySelector(".highlight").value = "";
-};
-
-const removeHighlight = function() {
-  let player = d3.select(".highlighted-players").property("value");
-  let playerIdx = watchList.indexOf(player);
-  watchList.splice(playerIdx, 1);
-  let players = d3.selectAll(".watching");
-  players.each(function(d, i) {
-    if (player === "" && i === players.nodes().length - 1) {
-      this.remove();
-    } else if (this.value === player) {
-      this.remove();
-    }
-  });
-  if (watchList.length === 0) {
-    reRenderData();
-  } else {
-    highlightPlayer();
-  }
-};
-
-const resetHighlight = function(e) {
-  let reset = e["type"] === "click" || false;
-  let circles = d3.selectAll("circle");
-  if (reset) {
-    circles.each(function(circle) {
-      let that = d3.select(this);
-      that
-        .attr("stroke-width", 0)
-        .attr("r", function(d) {
-          return rScale(d["minutes"] / d["games"]);
-        })
-        .style("opacity", 0.5);
-    });
-  }
-  let players = d3.selectAll(".watching");
-  players.each(function(player) {
-    this.remove();
-  });
-  watchList = [];
 };
 
 const reRenderData = function() {

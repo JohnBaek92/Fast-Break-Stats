@@ -90,6 +90,8 @@ d3.selection.prototype.moveToFront = function() {
 let rScale;
 let watchList = [];
 
+
+//scatterplot functions
 const filter = function() {
   let pgFilter = d3.select(".one").property("checked");
   let sgFilter = d3.select(".two").property("checked");
@@ -375,6 +377,15 @@ const reRenderData = function() {
   renderData();
 };
 
+//information menu functions
+const openInfo = function() {
+  document.getElementById("information").style.width = "15em";
+  d3.select(".information-open")
+  .attr("class", "hidden");
+};
+
+
+
 document.addEventListener("DOMContentLoaded", renderData);
 document
   .querySelector(".highlight")
@@ -392,6 +403,9 @@ document
 document
   .querySelector(".season-filter")
   .addEventListener("change", reRenderData);
+document
+  .querySelector(".information-open")
+  .addEventListener("click", openInfo);
 
 
 /***/ }),

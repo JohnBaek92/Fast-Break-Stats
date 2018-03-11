@@ -299,11 +299,12 @@ const reRenderData = function() {
 
 //information menu functions
 const openInfo = function() {
-  document.getElementById("information").style.width = "15em";
-  d3.select(".information-open")
-  .attr("class", "hidden");
+  document.getElementById("information").style.width = "50%";
 };
 
+const closeInfo = function() {
+  document.getElementById("information").style.width = "0";
+};
 
 
 document.addEventListener("DOMContentLoaded", renderData);
@@ -326,3 +327,6 @@ document
 document
   .querySelector(".information-open")
   .addEventListener("click", openInfo);
+document
+  .querySelector("#information-close")
+  .addEventListener("click", closeInfo);

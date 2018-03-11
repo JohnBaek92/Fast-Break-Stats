@@ -18,7 +18,57 @@
     </header>
     <div class="app-wrapper">
         <div id="information">
+            <div>Hover Over A Circle For Information</div>
             <div>Radius Of Circle Determined By Avg Minutes Played</div>
+            <hr/>
+            <div>
+                <div>ORB/G, DRB/G, REB/G,</div>
+                <div>AST/G, STL/G, BLK/G, TOV/G, PTS/G</div>
+                <br />
+                <div>Offensive Rebounds, Defensive Rebounds, Total Rebounds, Assists, Steals, Blocks, Turnovers, Points PER GAME</div>
+            </div>
+            <hr/>
+            <div>
+                <div>
+                    <div>
+                        TS%, AST%, ORB%, DRB%, TRB%, STL%,
+                    </div>
+                    <div>
+                        BLK%, USG%, TOV%, FG%, FT%, 3P%
+                    </div>
+                    <br />
+                    <div>
+                        True Shooting%, Assist%, Offensive Rebound%, Defensive Rebound%, Total Rebound%, Steal%
+                    </div>
+                    <div>
+                        Block%, Usage%, Turnover%, Field Goal%,
+                    </div>
+                    <div>
+                        Free Throw%, Three-Point%
+                    </div>
+                </div>
+                <hr />
+                <div>
+                    <div>
+                        <div>
+                            OBPM, DBPM, BPM, 3PAR, Tot Min
+                        </div>
+                        <div>
+                            <div>Offensive Box Plus Minus, Defensive Box Plus Minus,</div>
+                            <div>Box Plus Minus, Three-Point Attempt Rate, Total Minutes</div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div>
+                    For details on computation of these stats, please visit
+                    <a class="footer-links" href="http://www.basketball-reference.com/about/glossary.html">
+                        Basketball-Reference
+                    </a>
+                </div>
+                <hr/>
+                <div id="information-close">Close</div>
+            </div>
         </div>
         <div class="information-open">Information</div>
         <div id="chart-wrapper">
@@ -49,22 +99,6 @@
                 <div class="axis-input">
                     <div class="x-axis-group">
                         <select class="x-selector vertical-center" size="5">
-                            <option value="ts%">TS%</option>
-                            <option value="threeRate">3PAr</option>
-                            <option value="ast%">AST%</option>
-                            <option value="oRb%">ORB%</option>
-                            <option value="dRb%">DRB%</option>
-                            <option value="tRb%">TRB%</option>
-                            <option value="stl%">STL%</option>
-                            <option value="blk%">BLK%</option>
-                            <option value="usg%">USG%</option>
-                            <option value="tov%">TOV%</option>
-                            <option value="obpm">OBPM</option>
-                            <option value="dbpm">DBPM</option>
-                            <option value="bpm">BPM</option>
-                            <option value="fg%" selected="true">FG%</option>
-                            <option value="three%">3P%</option>
-                            <option value="ft%">FT%</option>
                             <option value="orbPg">ORB/G</option>
                             <option value="drbPg">DRB/G</option>
                             <option value="trbPg">REB/G</option>
@@ -73,29 +107,29 @@
                             <option value="blkPg">BLK/G</option>
                             <option value="tovPg">TOV/G</option>
                             <option value="ptsPg">PTS/G</option>
-                            <option value="minutes">Tot Min</option>
+                            <option value="ts%">TS%</option>
+                            <option value="ast%">AST%</option>
+                            <option value="oRb%">ORB%</option>
+                            <option value="dRb%">DRB%</option>
+                            <option value="tRb%">TRB%</option>
+                            <option value="stl%">STL%</option>
+                            <option value="blk%">BLK%</option>
+                            <option value="usg%">USG%</option>
+                            <option value="tov%">TOV%</option>
+                            <option value="fg%" selected="true">FG%</option>
+                            <option value="ft%">FT%</option>
+                            <option value="three%">3P%</option>
+                            <option value="obpm">OBPM</option>
+                            <option value="dbpm">DBPM</option>
+                            <option value="bpm">BPM</option>
+                            <option value="threeRate">3PAR</option>
+                            <option value="minutes">TOT MIN</option>
                         </select>
                         <h2 class="axis-label">X-Axis </h2>
                     </div>
                     <hr />
                     <div class="y-axis-group">
                         <select class="y-selector vertical-center" size="5">
-                            <option value="ts%">TS%</option>
-                            <option value="threeRate">3PAr</option>
-                            <option value="ast%">AST%</option>
-                            <option value="oRb%">ORB%</option>
-                            <option value="dRb%">DRB%</option>
-                            <option value="tRb%">TRB%</option>
-                            <option value="stl%">STL%</option>
-                            <option value="blk%">BLK%</option>
-                            <option value="usg%">USG%</option>
-                            <option value="tov%">TOV%</option>
-                            <option value="obpm">OBPM</option>
-                            <option value="dbpm">DBPM</option>
-                            <option value="bpm">BPM</option>
-                            <option value="fg%">FG%</option>
-                            <option value="three%">3P%</option>
-                            <option value="ft%" selected="true">FT%</option>
                             <option value="orbPg">ORB/G</option>
                             <option value="drbPg">DRB/G</option>
                             <option value="trbPg">REB/G</option>
@@ -104,10 +138,25 @@
                             <option value="blkPg">BLK/G</option>
                             <option value="tovPg">TOV/G</option>
                             <option value="ptsPg">PTS/G</option>
-                            <option value="minutes">Tot Min</option>
+                            <option value="ts%">TS%</option>
+                            <option value="ast%">AST%</option>
+                            <option value="oRb%">ORB%</option>
+                            <option value="dRb%">DRB%</option>
+                            <option value="tRb%">TRB%</option>
+                            <option value="stl%">STL%</option>
+                            <option value="blk%">BLK%</option>
+                            <option value="usg%">USG%</option>
+                            <option value="tov%">TOV%</option>
+                            <option value="fg%">FG%</option>
+                            <option value="ft%" selected="true">FT%</option>
+                            <option value="three%">3P%</option>
+                            <option value="obpm">OBPM</option>
+                            <option value="dbpm">DBPM</option>
+                            <option value="bpm">BPM</option>
+                            <option value="threeRate">3PAR</option>
+                            <option value="minutes">TOT MIN</option>
                         </select>
                         <h2 class="axis-label">Y-Axis </h2>
-
                     </div>
                 </div>
             </div>
@@ -129,39 +178,39 @@
                     <input type="checkbox" class="five" checked>
                 </div>
                 <div class="team-filter-wrapper">
-                        <select class="team-filter">
-                            <option value="ALL">All Teams</option>
-                            <option value="ATL">Atlanta Hawks</option>
-                            <option value="BOS">Boston Celtics</option>
-                            <option value="BRK NJN" selected="true">Brooklyn Nets</option>
-                            <option value="CHO CHA">Charlotte Hornets</option>
-                            <option value="CHI">Chicago Bulls</option>
-                            <option value="CLE">Cleveland Cavaliers</option>
-                            <option value="DAL">Dallas Mavericks</option>
-                            <option value="DEN">Denver Nuggets</option>
-                            <option value="DET">Detroit Pistons</option>
-                            <option value="GSW">Golden State Warriors</option>
-                            <option value="HOU">Houston Rockets</option>
-                            <option value="IND">Indiana Pacers</option>
-                            <option value="LAC">LA Clippers</option>
-                            <option value="LAL">LA Lakers</option>
-                            <option value="MEM">Memphis Grizzlies</option>
-                            <option value="MIA">Miami Heat</option>
-                            <option value="MIL">Milwaukee Bucks</option>
-                            <option value="MIN">Minnesota Timberwolves</option>
-                            <option value="NOP NOH">New Orleans Pelicans</option>
-                            <option value="NYK">New York Knicks</option>
-                            <option value="OKC">Oklahoma City Thunder</option>
-                            <option value="ORL">Orlando Magic</option>
-                            <option value="PHI">Philadelphia 76ers</option>
-                            <option value="PHO">Phoenix Suns</option>
-                            <option value="POR">Portland Trailblazers</option>
-                            <option value="SAC">Sacramento Kings</option>
-                            <option value="SAS">San Antonio Spurs</option>
-                            <option value="TOR">Toronto Raptors</option>
-                            <option value="UTA">Utah Jazz</option>
-                            <option value="WAS">Washington Wizards</option>
-                        </select>
+                    <select class="team-filter">
+                        <option value="ALL">All Teams</option>
+                        <option value="ATL">Atlanta Hawks</option>
+                        <option value="BOS">Boston Celtics</option>
+                        <option value="BRK NJN" selected="true">Brooklyn Nets</option>
+                        <option value="CHO CHA">Charlotte Hornets</option>
+                        <option value="CHI">Chicago Bulls</option>
+                        <option value="CLE">Cleveland Cavaliers</option>
+                        <option value="DAL">Dallas Mavericks</option>
+                        <option value="DEN">Denver Nuggets</option>
+                        <option value="DET">Detroit Pistons</option>
+                        <option value="GSW">Golden State Warriors</option>
+                        <option value="HOU">Houston Rockets</option>
+                        <option value="IND">Indiana Pacers</option>
+                        <option value="LAC">LA Clippers</option>
+                        <option value="LAL">LA Lakers</option>
+                        <option value="MEM">Memphis Grizzlies</option>
+                        <option value="MIA">Miami Heat</option>
+                        <option value="MIL">Milwaukee Bucks</option>
+                        <option value="MIN">Minnesota Timberwolves</option>
+                        <option value="NOP NOH">New Orleans Pelicans</option>
+                        <option value="NYK">New York Knicks</option>
+                        <option value="OKC">Oklahoma City Thunder</option>
+                        <option value="ORL">Orlando Magic</option>
+                        <option value="PHI">Philadelphia 76ers</option>
+                        <option value="PHO">Phoenix Suns</option>
+                        <option value="POR">Portland Trailblazers</option>
+                        <option value="SAC">Sacramento Kings</option>
+                        <option value="SAS">San Antonio Spurs</option>
+                        <option value="TOR">Toronto Raptors</option>
+                        <option value="UTA">Utah Jazz</option>
+                        <option value="WAS">Washington Wizards</option>
+                    </select>
                 </div>
                 <hr />
                 <div class="centered column highlight-wrapper">
@@ -184,16 +233,23 @@
     </div>
     <footer class="footer centered">
         <div>
-            Data Scraped Using <a class="footer-links" href="https://www.basketball-reference.com" target="_blank">Basketball-Reference</a>
+            Data Scraped Using
+            <a class="footer-links" href="https://www.basketball-reference.com" target="_blank">Basketball-Reference</a>
         </div>
         <div>
             Last Updated 3/10/2018
         </div>
         <div>
-            Created By <a class="footer-links" href="http://johnbaek.life" target="_blank">John Baek</a>
+            Created By
+            <a class="footer-links" href="http://johnbaek.life" target="_blank">John Baek</a>
         </div>
         <div>
-            <a href="https://www.linkedin.com/in/john-baek92/" target="_blank"><img class="footer-links" src="linkedIN.png" /></a> <a href="https://www.github.com/johnbaek92" target="_blank"><img class="footer-links" src="github.png" /></a>
+            <a href="https://www.linkedin.com/in/john-baek92/" target="_blank">
+                <img class="footer-links" src="linkedIN.png" />
+            </a>
+            <a href="https://www.github.com/johnbaek92" target="_blank">
+                <img class="footer-links" src="github.png" />
+            </a>
         </div>
     </footer>
 </body>

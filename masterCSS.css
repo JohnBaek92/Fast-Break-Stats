@@ -280,7 +280,15 @@ select {
   z-index: 10;
   overflow-x: hidden;
   transition: 0.5s;
-  left: 0;
-  top: 35%;
+  left: 0em;
+  top: 8%;
   position: fixed;
+  text-align: center;
+  background: red;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+}
+
+#information-close {
+  cursor: pointer;
 }

@@ -382,6 +382,7 @@ const closeInfo = function() {
   document.getElementById("information").style.width = "0";
 };
 
+//event listeners
 document.addEventListener("DOMContentLoaded", renderData);
 document
   .querySelector(".highlight")

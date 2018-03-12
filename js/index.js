@@ -223,15 +223,7 @@ const renderData = () => {
         tooltip
           .html(
             `<img src=https://d2cwpp38twqe55.cloudfront.net/req/201802231/images/players/` +
-              d["name"]
-                .split(" ")[1]
-                .slice(0, 5)
-                .toLowerCase() +
-              d["name"]
-                .split(" ")[0]
-                .slice(0, 2)
-                .toLowerCase() +
-              "01.jpg" +
+              d["playerId"] + ".jpg" +
               ">" +
               "<br/>" +
               d["name"] +

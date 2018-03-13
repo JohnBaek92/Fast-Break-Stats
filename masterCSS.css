@@ -99,7 +99,7 @@ div.tooltip {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   margin-left: 1em;
   background: #f1f1f1;
-  max-height: 652px;
+  max-height: 652 px;
   box-sizing: border-box;
 }
 
@@ -148,6 +148,7 @@ div.tooltip {
 }
 
 .season-filter {
+  margin-top: 1em;
   display: flex;
   flex-direction: row;
   justify-content: center;
